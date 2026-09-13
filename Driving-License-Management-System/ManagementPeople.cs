@@ -10,17 +10,13 @@ using System.Windows.Forms;
 
 namespace Driving_License_Management_System
 {
-    public partial class Form1 : Form
+    public partial class frmManagePeople : Form
     {
-        public Form1()
+        public frmManagePeople()
         {
             InitializeComponent();
         }
 
-        private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmManagePeople frm = new frmManagePeople();
-            frm.ShowDialog();
-        }
+        
     }
 }
