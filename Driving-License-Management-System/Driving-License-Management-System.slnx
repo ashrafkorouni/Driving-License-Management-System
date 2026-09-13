@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="Driving-License-Management-System.csproj" Id="71914108-9b24-44ad-8efe-f057c7d83ea3" />
+  <Project Path="../DVLD_Business/DVLD_Business.csproj" Id="fb6f84a5-ba6a-4eff-b3f7-5f736121414b" />
+  <Project Path="../DVLD_DataAccess/DVLD_DataAccess.csproj" Id="09d7411c-4e73-4d7b-976f-2a8cda029db8" />
+  <Project Path="DVLD_Presentation.csproj" Id="71914108-9b24-44ad-8efe-f057c7d83ea3" />
 </Solution>
