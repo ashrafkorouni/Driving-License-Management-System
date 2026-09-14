@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ctrlAddNewPerson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlAddNewPerson.Designer.cs">
+      <DependentUpon>ctrlAddNewPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ctrlAddNewPerson.resx">
+      <DependentUpon>ctrlAddNewPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,6 +114,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-account-settings-61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DVLD_Business\DVLD_Business.csproj">
+      <Project>{fb6f84a5-ba6a-4eff-b3f7-5f736121414b}</Project>
+      <Name>DVLD_Business</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_add_12818.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_add_user_16734.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\business_application_addmale_useradd_insert_add_user_client_2312.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Student-id_35758.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-id-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

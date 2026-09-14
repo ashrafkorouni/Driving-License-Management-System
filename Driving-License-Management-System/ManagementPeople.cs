@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,21 @@ namespace Driving_License_Management_System
             InitializeComponent();
         }
 
-        
+        private void _RefershPeopleList()
+        {
+            dgvPeople.DataSource = clsPeopleManagement.GetPeople();
+        }
+
+
+        private void frmManagePeople_Load(object sender, EventArgs e)
+        {
+            _RefershPeopleList();
+            lblRecords.Text = dgvPeople.RowCount.ToString();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
