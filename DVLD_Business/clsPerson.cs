@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DVLD_Business
 {
-    public class clsPeopleManagement
+    public class clsPerson
     {
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
@@ -25,9 +25,19 @@ namespace DVLD_Business
         public string Email { set; get; }
         public int NationalityCountryID { set; get; }
         public string Address { set; get; }
-        public string ImagePath { set; get; }
 
-        public clsPeopleManagement()
+        private string _ImagePath;
+
+        public string ImagePath
+        { 
+            get { return _ImagePath; }
+
+            set { _ImagePath = value; }
+        }
+
+        public clsCountry CountryInfo;
+
+        public clsPerson()
         {
             PersonID = -1;
             FirstName = "";
@@ -46,7 +56,7 @@ namespace DVLD_Business
             Mode = enMode.AddNew;
         }
 
-        private clsPeopleManagement(int PersonID, string FirstName, string SecondName, string ThirdName,
+        private clsPerson(int PersonID, string FirstName, string SecondName, string ThirdName,
             string LastName, string NationalNo, DateTime DateOfBirth, byte Gendor, string Phone, string Email,
             int NationalityCountryID, string Address, string ImagePath)
         {
@@ -63,6 +73,9 @@ namespace DVLD_Business
             this.NationalityCountryID = NationalityCountryID;
             this.Address = Address;
             this.ImagePath = ImagePath;
+            this.CountryInfo = clsCountry.Find(NationalityCountryID);
+
+            Mode = enMode.Update;
         }
 
         private bool _AddNewPerson()
@@ -81,11 +94,47 @@ namespace DVLD_Business
                 this.NationalityCountryID, this.Address, this.ImagePath);
         }
 
-        public static DataTable GetPeople()
+        public static clsPerson Find(int PersonID)
         {
-            return clsPersonData.GetAllPeople();
+            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", NationalNo = "", Email = "", Phone = "", Address = "", ImagePath = "";
+            DateTime DateOfBirth = DateTime.Now;
+            int NationalityCountryID = -1;
+            byte Gendor = 0;
+
+            bool isFound = clsPersonData.GetPersonInfoByID(PersonID, ref FirstName, ref SecondName, ref ThirdName, ref LastName, ref NationalNo,
+                                            ref DateOfBirth, ref Gendor, ref Phone, ref Email, ref NationalityCountryID,
+                                            ref Address, ref ImagePath);
+
+            if(isFound)
+               return new clsPerson(PersonID, FirstName, SecondName, ThirdName, LastName, NationalNo, DateOfBirth,
+                                Gendor, Phone, Email, NationalityCountryID, Address, ImagePath);
+            else
+
+                return null;
+                                
         }
 
+        public static clsPerson Find(string NationalNo)
+        {
+            int PersonID = -1;
+            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
+            DateTime DateOfBirth = DateTime.Now;
+            int NationalityCountryID = -1;
+            byte Gendor = 0;
+
+            bool isFound = clsPersonData.GetPersonInfoByNationalNo(NationalNo, ref PersonID, ref FirstName, ref SecondName, ref ThirdName, ref LastName,
+                                            ref DateOfBirth, ref Gendor, ref Phone, ref Email, ref NationalityCountryID,
+                                            ref Address, ref ImagePath);
+
+            if (isFound)
+                return new clsPerson(PersonID, FirstName, SecondName, ThirdName, LastName, NationalNo, DateOfBirth,
+                                 Gendor, Phone, Email, NationalityCountryID, Address, ImagePath);
+            else
+
+                return null;
+
+        }
+        
         public bool Save()
         {
             switch (Mode)
@@ -109,5 +158,25 @@ namespace DVLD_Business
             return false;
         }
 
+        public static DataTable GetPeople()
+        {
+            return clsPersonData.GetAllPeople();
+        }
+
+
+        public static bool DeletePerson(int PersonID)
+        {
+            return clsPersonData.DeletePesone(PersonID);
+        }
+
+        public static bool IsPersonExist(int PersonID)
+        {
+            return clsPersonData.IsPersonExist(PersonID);
+        }
+
+        public static bool IsPersonExist(string NationalNo)
+        {
+            return clsPersonData.IsPersonExist(NationalNo);
+        }
     }
 }

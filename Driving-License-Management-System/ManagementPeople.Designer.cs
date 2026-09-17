@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblRecords = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvPeople = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddNewPerson = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblRecords = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,6 +57,16 @@
             this.panel3.Size = new System.Drawing.Size(1065, 278);
             this.panel3.TabIndex = 9;
             // 
+            // lblRecords
+            // 
+            this.lblRecords.AutoSize = true;
+            this.lblRecords.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecords.Location = new System.Drawing.Point(95, 251);
+            this.lblRecords.Name = "lblRecords";
+            this.lblRecords.Size = new System.Drawing.Size(34, 14);
+            this.lblRecords.TabIndex = 9;
+            this.lblRecords.Text = "###";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -69,6 +79,7 @@
             // 
             // dgvPeople
             // 
+            this.dgvPeople.AllowUserToAddRows = false;
             this.dgvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPeople.Location = new System.Drawing.Point(0, 3);
             this.dgvPeople.Name = "dgvPeople";
@@ -115,16 +126,17 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Filter By: ";
             // 
-            // button1
+            // btnAddNewPerson
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::Driving_License_Management_System.Properties.Resources.business_application_addmale_useradd_insert_add_user_client_2312;
-            this.button1.Location = new System.Drawing.Point(1000, 219);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(53, 48);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddNewPerson.FlatAppearance.BorderSize = 0;
+            this.btnAddNewPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewPerson.Image = global::Driving_License_Management_System.Properties.Resources.business_application_addmale_useradd_insert_add_user_client_2312;
+            this.btnAddNewPerson.Location = new System.Drawing.Point(1000, 219);
+            this.btnAddNewPerson.Name = "btnAddNewPerson";
+            this.btnAddNewPerson.Size = new System.Drawing.Size(53, 48);
+            this.btnAddNewPerson.TabIndex = 2;
+            this.btnAddNewPerson.UseVisualStyleBackColor = true;
+            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
             // 
             // pictureBox1
             // 
@@ -136,16 +148,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // lblRecords
-            // 
-            this.lblRecords.AutoSize = true;
-            this.lblRecords.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecords.Location = new System.Drawing.Point(95, 251);
-            this.lblRecords.Name = "lblRecords";
-            this.lblRecords.Size = new System.Drawing.Size(34, 14);
-            this.lblRecords.TabIndex = 9;
-            this.lblRecords.Text = "###";
-            // 
             // frmManagePeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,7 +156,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddNewPerson);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
             this.HelpButton = true;
@@ -179,7 +181,7 @@
         private System.Windows.Forms.DataGridView dgvPeople;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddNewPerson;
         private System.Windows.Forms.Label lblRecords;
     }
 }

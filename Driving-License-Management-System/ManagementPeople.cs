@@ -20,19 +20,27 @@ namespace Driving_License_Management_System
 
         private void _RefershPeopleList()
         {
-            dgvPeople.DataSource = clsPeopleManagement.GetPeople();
+            dgvPeople.DataSource = clsPerson.GetPeople();
+            lblRecords.Text = dgvPeople.RowCount.ToString();
         }
 
 
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
             _RefershPeopleList();
-            lblRecords.Text = dgvPeople.RowCount.ToString();
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        {
+            frmAddUpdatePerson frm = new frmAddUpdatePerson();
+            frm.ShowDialog();
+            _RefershPeopleList();
         }
     }
 }
