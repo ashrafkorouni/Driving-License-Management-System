@@ -1,5 +1,6 @@
 ﻿using Driving_License_Management_System.GlobelClasses;
 using Driving_License_Management_System.Properties;
+using DVLD.Classes;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -202,7 +203,7 @@ namespace Driving_License_Management_System
             {
                 string sourceImageFile = pbPersonImage.ImageLocation.ToString();
 
-                if(clsUtil.CopyImageToProjectImageFolder(ref sourceImageFile))
+                if(clsUtil.CopyImageToProjectImagesFolder(ref sourceImageFile))
                 {
                     pbPersonImage.ImageLocation = sourceImageFile;
                     return true;

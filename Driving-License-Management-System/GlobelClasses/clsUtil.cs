@@ -1,20 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Driving_License_Management_System.GlobelClasses
+namespace DVLD.Classes
 {
     public class clsUtil
     {
         public static string GenerateGUID()
         {
-            Guid guid = new Guid();
 
-            return guid.ToString();
+            // Generate a new GUID
+            Guid newGuid = Guid.NewGuid();
+
+            // convert the GUID to a string
+            return newGuid.ToString();
+
         }
 
-        public static bool CreateFolderIfIsNotExist(string FolderPath)
+        public static bool CreateFolderIfDoesNotExist(string FolderPath)
         {
+
             // Check if the folder exists
             if (!Directory.Exists(FolderPath))
             {
@@ -26,26 +36,33 @@ namespace Driving_License_Management_System.GlobelClasses
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error Creating Folder Was Faild " + ex.Message);
+                    MessageBox.Show("Error creating folder: " + ex.Message);
                     return false;
                 }
             }
+
             return true;
+
         }
 
         public static string ReplaceFileNameWithGUID(string sourceFile)
         {
-            string FileName = sourceFile;
-            FileInfo fi = new FileInfo(FileName);
+            // Full file name. Change your file name   
+            string fileName = sourceFile;
+            FileInfo fi = new FileInfo(fileName);
             string extn = fi.Extension;
             return GenerateGUID() + extn;
+
         }
 
-        public static bool CopyImageToProjectImageFolder(ref string sourceFile)
+        public static bool CopyImageToProjectImagesFolder(ref string sourceFile)
         {
-            string DestinationFolder = @"D:\DVLD-People-Images\";
+            // this funciton will copy the image to the
+            // project images foldr after renaming it
+            // with GUID with the same extention, then it will update the sourceFileName with the new name.
 
-            if (!CreateFolderIfIsNotExist(DestinationFolder))
+            string DestinationFolder = @"C:\DVLD-People-Images\";
+            if (!CreateFolderIfDoesNotExist(DestinationFolder))
             {
                 return false;
             }
@@ -54,6 +71,7 @@ namespace Driving_License_Management_System.GlobelClasses
             try
             {
                 File.Copy(sourceFile, destinationFile, true);
+
             }
             catch (IOException iox)
             {

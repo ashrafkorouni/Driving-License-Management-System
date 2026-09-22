@@ -79,9 +79,9 @@ namespace Driving_License_Management_System.People.Controls
         private void _LoadPersonImage()
         {
             if (_Person.Gendor == 0)
-                pbPersonImage.Image = Resources.Man_32;
+                pbPersonImage.Image = Resources.Male_512;
             else
-                pbPersonImage.Image = Resources.Woman_32;
+                pbPersonImage.Image = Resources.Female_512;
 
             string ImagePath = _Person.ImagePath;
             if (ImagePath != "")
@@ -99,6 +99,7 @@ namespace Driving_License_Management_System.People.Controls
         {
             llEditPersonInfo.Visible = true;
             _PersonID = _Person.PersonID;
+            lblPersonID.Text = _Person.PersonID.ToString();
             lblName.Text = _Person.FullName;
             lblNationalNo.Text = _Person.NationalNo;
             lblGendor.Text = _Person.Gendor == 0 ? "Male" : "Female";

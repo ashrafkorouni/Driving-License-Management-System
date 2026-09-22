@@ -162,7 +162,7 @@ namespace DVLD_Business
             return false;
         }
 
-        public static DataTable GetPeople()
+        public static DataTable GetAllPeople()
         {
             return clsPersonData.GetAllPeople();
         }
