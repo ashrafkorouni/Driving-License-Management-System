@@ -158,6 +158,12 @@ namespace DVLD_Business
             return clsUserData.IsUserExist(UserName);
         }
 
+        public static bool isUserExistForPersonID(int PersonID)
+        {
+            return clsUserData.IsUserExistForPersonID(PersonID);
+        }
+
+
         public static bool ChangePassword(int UserID, string NewPassword)
         {
             return clsUserData.ChangePassword(UserID, NewPassword);

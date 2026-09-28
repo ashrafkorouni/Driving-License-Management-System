@@ -40,7 +40,7 @@ namespace Driving_License_Management_System.People.Controls
 
             if(_Person == null)
             {
-                RestDefaultValue();
+                ResetDefaultValue();
                 MessageBox.Show("No Person With PersonID: " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -53,14 +53,14 @@ namespace Driving_License_Management_System.People.Controls
 
             if (_Person == null)
             {
-                RestDefaultValue();
+                ResetDefaultValue();
                 MessageBox.Show("No Person With NationalNo: " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             _FillPersonInfo();
         }
 
-        public void RestDefaultValue()
+        public void ResetDefaultValue()
         {
             _PersonID = -1;
             lblPersonID.Text = "[????]";

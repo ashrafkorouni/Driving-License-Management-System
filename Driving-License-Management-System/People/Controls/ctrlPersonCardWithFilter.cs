@@ -109,7 +109,7 @@ namespace Driving_License_Management_System.People.Controls
         {
             if(!this.ValidateChildren())
             {
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the error", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
             }
@@ -127,11 +127,11 @@ namespace Driving_License_Management_System.People.Controls
             if(string.IsNullOrEmpty(txtFilterValue.Text.Trim()))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtFilterValue, "This Field Is Required!");
+                //errorProvider1.SetError(txtFilterValue, "This Field Is Required!");
             }
             else
             {
-                e.Cancel= false;
+                
                 errorProvider1.SetError(txtFilterValue, null);
             }
         }

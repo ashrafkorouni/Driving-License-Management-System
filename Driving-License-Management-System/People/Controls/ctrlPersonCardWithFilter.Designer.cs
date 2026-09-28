@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ctrlPersonCard1 = new Driving_License_Management_System.People.Controls.ctrlPersonCard();
             this.gbFilters = new System.Windows.Forms.GroupBox();
             this.btnAddNewPerson = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
@@ -37,18 +36,10 @@
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlPersonCard1 = new Driving_License_Management_System.People.Controls.ctrlPersonCard();
             this.gbFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ctrlPersonCard1
-            // 
-            this.ctrlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(13, 102);
-            this.ctrlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(824, 297);
-            this.ctrlPersonCard1.TabIndex = 0;
             // 
             // gbFilters
             // 
@@ -113,18 +104,28 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(52, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 20);
+            this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Filter By:";
+            this.label1.Text = "Find By:";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // ctrlPersonCard1
+            // 
+            this.ctrlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(13, 102);
+            this.ctrlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(824, 297);
+            this.ctrlPersonCard1.TabIndex = 0;
+            // 
             // ctrlPersonCardWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.gbFilters);
             this.Controls.Add(this.ctrlPersonCard1);
