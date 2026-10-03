@@ -1,4 +1,5 @@
-﻿using Driving_License_Management_System.GlobelClasses;
+﻿using Driving_License_Management_System.Applications;
+using Driving_License_Management_System.GlobelClasses;
 using Driving_License_Management_System.Login;
 using Driving_License_Management_System.Users;
 using System;
@@ -56,6 +57,12 @@ namespace Driving_License_Management_System
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListApplicationTypes frm = new frmListApplicationTypes();
             frm.ShowDialog();
         }
     }
