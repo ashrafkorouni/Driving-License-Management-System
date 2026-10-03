@@ -45,7 +45,6 @@ namespace DVLD_DataAccess
             return dt;
         }
 
-
         public static bool UpdateApplicationType(int ApplicationTypeID, string Title, float Fees)
         {
             int rowsAffected = 0;
@@ -69,7 +68,7 @@ namespace DVLD_DataAccess
 
                 rowsAffected = command.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //Console.WriteLine("Error: " + ex.Message);
                 return false;
@@ -82,5 +81,61 @@ namespace DVLD_DataAccess
 
             return (rowsAffected > 0);
         }
+
+        public static bool GetApplicationTypeInfoByID(int ApplicationTypeID,
+           ref string ApplicationTypeTitle, ref float ApplicationFees)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+
+                    // The record was found
+                    isFound = true;
+
+                    ApplicationTypeTitle = (string)reader["ApplicationTypeTitle"];
+                    ApplicationFees = Convert.ToSingle(reader["ApplicationFees"]);
+
+
+
+
+
+                }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
     }
 }
