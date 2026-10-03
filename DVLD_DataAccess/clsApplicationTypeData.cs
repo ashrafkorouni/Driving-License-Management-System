@@ -45,5 +45,42 @@ namespace DVLD_DataAccess
             return dt;
         }
 
+
+        public static bool UpdateApplicationType(int ApplicationTypeID, string Title, float Fees)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"UPDATE ApplicationTypes 
+                            SET ApplicationTypeTitle = @Title,
+                                ApplicationFees = @Fees
+                            WHERE ApplicationTypeID = @ApplicationTypeID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            command.Parameters.AddWithValue("@Title", Title);
+            command.Parameters.AddWithValue("@Fees", Fees);
+
+            try
+            {
+                connection.Open();
+
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                return false;
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return (rowsAffected > 0);
+        }
     }
 }
