@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvApplicationTypes = new System.Windows.Forms.DataGridView();
+            this.cmsApplicationTypes = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editApplicationTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.lblRecordsCount = new System.Windows.Forms.Label();
-            this.cmsApplicationTypes = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.editApplicationTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplicationTypes)).BeginInit();
             this.cmsApplicationTypes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,6 +67,23 @@
             this.dgvApplicationTypes.Size = new System.Drawing.Size(652, 272);
             this.dgvApplicationTypes.TabIndex = 2;
             // 
+            // cmsApplicationTypes
+            // 
+            this.cmsApplicationTypes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editApplicationTypeToolStripMenuItem});
+            this.cmsApplicationTypes.Name = "contextMenuStrip1";
+            this.cmsApplicationTypes.Size = new System.Drawing.Size(202, 42);
+            // 
+            // editApplicationTypeToolStripMenuItem
+            // 
+            this.editApplicationTypeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editApplicationTypeToolStripMenuItem.Image = global::Driving_License_Management_System.Properties.Resources.edit_321;
+            this.editApplicationTypeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.editApplicationTypeToolStripMenuItem.Name = "editApplicationTypeToolStripMenuItem";
+            this.editApplicationTypeToolStripMenuItem.Size = new System.Drawing.Size(201, 38);
+            this.editApplicationTypeToolStripMenuItem.Text = "Edit Application Type";
+            this.editApplicationTypeToolStripMenuItem.Click += new System.EventHandler(this.editApplicationTypeToolStripMenuItem_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -87,15 +104,9 @@
             this.lblRecordsCount.TabIndex = 5;
             this.lblRecordsCount.Text = "??";
             // 
-            // cmsApplicationTypes
-            // 
-            this.cmsApplicationTypes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editApplicationTypeToolStripMenuItem});
-            this.cmsApplicationTypes.Name = "contextMenuStrip1";
-            this.cmsApplicationTypes.Size = new System.Drawing.Size(202, 42);
-            // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = global::Driving_License_Management_System.Properties.Resources.icons8_close_321;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -104,7 +115,7 @@
             this.button1.Size = new System.Drawing.Size(136, 44);
             this.button1.TabIndex = 4;
             this.button1.Text = "Close";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
@@ -116,15 +127,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // editApplicationTypeToolStripMenuItem
-            // 
-            this.editApplicationTypeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editApplicationTypeToolStripMenuItem.Image = global::Driving_License_Management_System.Properties.Resources.edit_321;
-            this.editApplicationTypeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.editApplicationTypeToolStripMenuItem.Name = "editApplicationTypeToolStripMenuItem";
-            this.editApplicationTypeToolStripMenuItem.Size = new System.Drawing.Size(201, 38);
-            this.editApplicationTypeToolStripMenuItem.Text = "Edit Application Type";
             // 
             // frmListApplicationTypes
             // 
@@ -138,6 +140,7 @@
             this.Controls.Add(this.dgvApplicationTypes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmListApplicationTypes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List Application Types";

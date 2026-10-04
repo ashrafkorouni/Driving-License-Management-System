@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using Driving_License_Management_System.Applications.ApplicationTypes;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +15,6 @@ namespace Driving_License_Management_System.Applications
     public partial class frmListApplicationTypes : Form
     {
         private DataTable _dtAllApplicationTypes;
-
-
 
         public frmListApplicationTypes()
         {
@@ -41,6 +40,13 @@ namespace Driving_License_Management_System.Applications
 
             dgvApplicationTypes.Columns[2].HeaderText = "Fees";
             dgvApplicationTypes.Columns[2].Width = 100;
+        }
+
+        private void editApplicationTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEditApplicationType frm = new frmEditApplicationType((int)dgvApplicationTypes.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+            frmListApplicationTypes_Load(null, null);
         }
     }
 }
