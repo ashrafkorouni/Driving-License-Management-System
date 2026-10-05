@@ -34,8 +34,8 @@ namespace DVLD_DataAccess
                     isFound = true;
 
                     TestTypeTitle = (string)reader["TestTypeTitle"];
-                    TestDescription = (string)reader["TestDescription"];
-                    TestFees = Convert.ToSingle(reader["TestFees"]);
+                    TestDescription = (string)reader["TestTypeDescription"];
+                    TestFees = Convert.ToSingle(reader["TestTypeFees"]);
                 }
                 else
                 {
@@ -97,16 +97,15 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"INSERT INTO TestTypes(TestTypeTitle,TestTypeTitle,TestTypeFees)
-                            Values (@TestTypeTitle,@TestTypeDescription,@ApplicationFees)
-                            where TestTypeID = @TestTypeID;
-                            SELECT SCOPE_IDENTITY();";
+            string query = @"INSERT INTO TestTypes (TestTypeTitle, TestTypeDescription, TestTypeFees) 
+                     VALUES (@TestTypeTitle, @TestTypeDescription, @TestTypeFees); 
+                     SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@TestTypeTitle", Title);
             command.Parameters.AddWithValue("@TestTypeDescription", Description);
-            command.Parameters.AddWithValue("@ApplicationFees", Fees);
+            command.Parameters.AddWithValue("@TestTypeFees", Fees); 
 
             try
             {
@@ -118,13 +117,10 @@ namespace DVLD_DataAccess
                 {
                     TestTypeID = InsertedID;
                 }
-
-
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //Console.WriteLine("Error: " + ex.Message);
-
             }
             finally
             {

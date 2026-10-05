@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvTestTypes = new System.Windows.Forms.DataGridView();
+            this.cmsTestTypes = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.lblRecordsCount = new System.Windows.Forms.Label();
-            this.cmsTestTypes = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnClose = new System.Windows.Forms.Button();
             this.editTestTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestTypes)).BeginInit();
             this.cmsTestTypes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -48,24 +48,33 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(228, 180);
+            this.label1.Location = new System.Drawing.Point(293, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(315, 37);
             this.label1.TabIndex = 1;
             this.label1.Text = "Manage Test Types";
             // 
-            // dataGridView1
+            // dgvTestTypes
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.LightGray;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ContextMenuStrip = this.cmsTestTypes;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 230);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 204);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvTestTypes.AllowUserToAddRows = false;
+            this.dgvTestTypes.AllowUserToDeleteRows = false;
+            this.dgvTestTypes.BackgroundColor = System.Drawing.Color.White;
+            this.dgvTestTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTestTypes.ContextMenuStrip = this.cmsTestTypes;
+            this.dgvTestTypes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvTestTypes.Location = new System.Drawing.Point(12, 230);
+            this.dgvTestTypes.Name = "dgvTestTypes";
+            this.dgvTestTypes.ReadOnly = true;
+            this.dgvTestTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTestTypes.Size = new System.Drawing.Size(877, 204);
+            this.dgvTestTypes.TabIndex = 2;
+            // 
+            // cmsTestTypes
+            // 
+            this.cmsTestTypes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editTestTypeToolStripMenuItem});
+            this.cmsTestTypes.Name = "cmsTestTypes";
+            this.cmsTestTypes.Size = new System.Drawing.Size(197, 64);
             // 
             // label2
             // 
@@ -87,37 +96,32 @@
             this.lblRecordsCount.TabIndex = 4;
             this.lblRecordsCount.Text = "??";
             // 
-            // cmsTestTypes
-            // 
-            this.cmsTestTypes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editTestTypeToolStripMenuItem});
-            this.cmsTestTypes.Name = "cmsTestTypes";
-            this.cmsTestTypes.Size = new System.Drawing.Size(161, 42);
-            // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnClose.Image = global::Driving_License_Management_System.Properties.Resources.icons8_close_321;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(582, 448);
+            this.btnClose.Location = new System.Drawing.Point(733, 441);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(152, 44);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // editTestTypeToolStripMenuItem
             // 
             this.editTestTypeToolStripMenuItem.Image = global::Driving_License_Management_System.Properties.Resources.edit_322;
             this.editTestTypeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editTestTypeToolStripMenuItem.Name = "editTestTypeToolStripMenuItem";
-            this.editTestTypeToolStripMenuItem.Size = new System.Drawing.Size(160, 38);
+            this.editTestTypeToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.editTestTypeToolStripMenuItem.Text = "Edit Test Type";
+            this.editTestTypeToolStripMenuItem.Click += new System.EventHandler(this.editTestTypeToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Driving_License_Management_System.Properties.Resources.TestType_512;
-            this.pictureBox1.Location = new System.Drawing.Point(299, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(364, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(179, 156);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -129,11 +133,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(785, 497);
+            this.ClientSize = new System.Drawing.Size(897, 497);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblRecordsCount);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvTestTypes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -141,8 +145,9 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmListTestTypes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmListTestTypes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Text = "List Test Types";
+            this.Load += new System.EventHandler(this.frmListTestTypes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestTypes)).EndInit();
             this.cmsTestTypes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -154,7 +159,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvTestTypes;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblRecordsCount;
         private System.Windows.Forms.Button btnClose;

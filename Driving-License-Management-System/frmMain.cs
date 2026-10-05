@@ -1,6 +1,7 @@
 ﻿using Driving_License_Management_System.Applications;
 using Driving_License_Management_System.GlobelClasses;
 using Driving_License_Management_System.Login;
+using Driving_License_Management_System.Tests.Test_Types;
 using Driving_License_Management_System.Users;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,12 @@ namespace Driving_License_Management_System
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListApplicationTypes frm = new frmListApplicationTypes();
+            frm.ShowDialog();
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListTestTypes frm = new frmListTestTypes();
             frm.ShowDialog();
         }
     }
