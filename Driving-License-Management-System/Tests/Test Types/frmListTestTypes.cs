@@ -45,7 +45,7 @@ namespace Driving_License_Management_System.Tests.Test_Types
                 dgvTestTypes.Columns[2].Width = 400;
 
                 dgvTestTypes.Columns[3].HeaderText = "Fees";
-                dgvTestTypes.Columns[3].Width = 100;
+                dgvTestTypes.Columns[3].Width = 110;
             }
         }
 

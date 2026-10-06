@@ -32,10 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvTestTypes = new System.Windows.Forms.DataGridView();
             this.cmsTestTypes = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editTestTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.editTestTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTestTypes)).BeginInit();
             this.cmsTestTypes.SuspendLayout();
@@ -74,7 +74,16 @@
             this.cmsTestTypes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editTestTypeToolStripMenuItem});
             this.cmsTestTypes.Name = "cmsTestTypes";
-            this.cmsTestTypes.Size = new System.Drawing.Size(197, 64);
+            this.cmsTestTypes.Size = new System.Drawing.Size(161, 42);
+            // 
+            // editTestTypeToolStripMenuItem
+            // 
+            this.editTestTypeToolStripMenuItem.Image = global::Driving_License_Management_System.Properties.Resources.edit_322;
+            this.editTestTypeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.editTestTypeToolStripMenuItem.Name = "editTestTypeToolStripMenuItem";
+            this.editTestTypeToolStripMenuItem.Size = new System.Drawing.Size(160, 38);
+            this.editTestTypeToolStripMenuItem.Text = "Edit Test Type";
+            this.editTestTypeToolStripMenuItem.Click += new System.EventHandler(this.editTestTypeToolStripMenuItem_Click);
             // 
             // label2
             // 
@@ -108,15 +117,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // editTestTypeToolStripMenuItem
-            // 
-            this.editTestTypeToolStripMenuItem.Image = global::Driving_License_Management_System.Properties.Resources.edit_322;
-            this.editTestTypeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.editTestTypeToolStripMenuItem.Name = "editTestTypeToolStripMenuItem";
-            this.editTestTypeToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.editTestTypeToolStripMenuItem.Text = "Edit Test Type";
-            this.editTestTypeToolStripMenuItem.Click += new System.EventHandler(this.editTestTypeToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
