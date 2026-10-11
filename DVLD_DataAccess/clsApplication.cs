@@ -165,7 +165,7 @@ namespace DVLD_DataAccess
                                 LastStatusDate = @LastStatusDate,
                                 PaidFees = @PaidFees,
                                 CreatedByUserID=@CreatedByUserID
-                            where ApplicationID=@ApplicationID"";";
+                            where ApplicationID=@ApplicationID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -370,7 +370,7 @@ namespace DVLD_DataAccess
 
             command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
             command.Parameters.AddWithValue("@NewStatus", NewStatus);
-            command.Parameters.AddWithValue("LastStatusDate", DateTime.Now);
+            command.Parameters.AddWithValue("@LastStatusDate", DateTime.Now);
 
 
             try
