@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -88,5 +89,112 @@ namespace DVLD_Business
             Mode = enMode.Update;
         }
 
+        private bool _AddNewApplication()
+        {
+            this.ApplicationID = clsApplicationData.AddNewApplication(this.ApplicantPersonID, 
+                this.ApplicationDate, this.ApplicationTypeID,
+                (byte)this.ApplicationStatus, this.LastStatusDate, 
+                this.PaidFees, this.CreatedByUserID);
+
+            return (this.ApplicationID != -1);
+        }
+
+        private bool _UpdateApplication()
+        {
+            return clsApplicationData.UpdateApplication(this.ApplicationID, this.ApplicantPersonID,
+                this.ApplicationDate, this.ApplicationTypeID, (byte)this.ApplicationStatus,
+                this.LastStatusDate, this.PaidFees, this.CreatedByUserID);
+        }
+
+        public static clsApplication FindBaseApplication(int ApplicationID)
+        {
+            int ApplicantPersonID = -1;
+            DateTime ApplicationDate = DateTime.Now; int ApplicationTypeID = -1;
+            byte ApplicationStatus = 1; DateTime LastStatusDate = DateTime.Now;
+            float PaidFees = 0; int CreatedByUserID = -1;
+
+
+
+            bool isFound = clsApplicationData.GetApplicationInfoByID(ApplicationID, ref ApplicantPersonID,
+                ref ApplicationDate, ref ApplicationTypeID, ref ApplicationStatus, ref LastStatusDate,
+                ref PaidFees, ref CreatedByUserID);
+
+            if(isFound)
+            {
+                return new clsApplication(ApplicationID, ApplicantPersonID, ApplicationDate, ApplicationTypeID,
+                    (enApplicationStatus)ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public bool Cancel()
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, 2);
+        }
+
+        public bool SetComplete()
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, 3);
+        }
+
+        public bool Save()
+        {
+            switch(Mode)
+            {
+                case enMode.AddNew:
+                    if(_AddNewApplication())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case enMode.Update:
+
+                    return _UpdateApplication();
+            }
+            return false;
+        }
+
+        public bool Delete()
+        {
+            return clsApplicationData.DeleteApplication(this.ApplicationID);
+        }
+
+        public static bool IsApplicationExist(int ApplicationID)
+        {
+            return clsApplicationData.IsApplicationExist(ApplicationID);
+        }
+
+        public static bool DoesPersonHaveActiveApplication(int ApplicantPersonID, int ApplicationTypeID)
+        {
+            return clsApplicationData.DoesPersonHaveActiveApplication(ApplicantPersonID, ApplicationTypeID);
+        }
+
+        public bool DoesPersonHaveActiveApplication(int ApplicationTypeID)
+        {
+            return DoesPersonHaveActiveApplication(this.ApplicantPersonID, ApplicationTypeID);
+        }
+
+        public static int GetActiveApplicationID(int ApplicantPersonID, clsApplication.enApplicationType ApplicationType)
+        {
+            return clsApplicationData.GetActiveApplicationID(ApplicantPersonID, (int)ApplicationType);
+        }
+
+        public int GetActiveApplicationID(clsApplication.enApplicationType ApplicationTypeID)
+        {
+            return GetActiveApplicationID(this.ApplicantPersonID, ApplicationTypeID);
+        }
+
+        public static int GetActiveApplicationIDForLicenseClass(int ApplicantPersonID, clsApplication.enApplicationType ApplicationTypeID, int LicenseClassID)
+        {
+            return clsApplicationData.GetActiveApplicationIDForLicenseClass(ApplicantPersonID, (int)ApplicationTypeID, LicenseClassID);
+        }
     }
 }

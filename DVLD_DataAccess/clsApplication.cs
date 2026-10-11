@@ -61,7 +61,6 @@ namespace DVLD_DataAccess
             return IsFound;
         }
 
-
         public static DataTable GetAllApplications()
         {
             DataTable dataTable = new DataTable();
@@ -95,7 +94,6 @@ namespace DVLD_DataAccess
 
             return dataTable;
         }
-
 
         public static int AddNewApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
              byte ApplicationStatus, DateTime LastStatusDate,
@@ -148,7 +146,6 @@ namespace DVLD_DataAccess
             return ApplicationID;
         }
 
-
         public static bool UpdateApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
              byte ApplicationStatus, DateTime LastStatusDate,
              float PaidFees, int CreatedByUserID)
@@ -197,7 +194,6 @@ namespace DVLD_DataAccess
             return (rowsAffected > 0);
         }
 
-
         public static bool DeleteApplication(int ApplicationID)
         {
             int rowsAffected = 0;
@@ -227,7 +223,6 @@ namespace DVLD_DataAccess
 
             return (rowsAffected > 0);
         }
-
 
         public static bool IsApplicationExist(int ApplicationID)
         {
@@ -262,8 +257,7 @@ namespace DVLD_DataAccess
 
         }
 
-
-        public static bool DosePersonHaveActiveApplication(int ApplicantPersonID, int ApplicationTypeID)
+        public static bool DoesPersonHaveActiveApplication(int ApplicantPersonID, int ApplicationTypeID)
         {
             //incase the ActiveApplication ID !=-1 return true.
             return (GetActiveApplicationID(ApplicantPersonID, ApplicationTypeID) != -1);
