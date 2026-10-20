@@ -71,6 +71,7 @@
     <Compile Include="Applications\Local Driving License\frmAddUpdateLocalDrivingLicesnseApplication.Designer.cs">
       <DependentUpon>frmAddUpdateLocalDrivingLicesnseApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobelClasses\clsFormat.cs" />
     <Compile Include="GlobelClasses\clsGlobal.cs" />
     <Compile Include="GlobelClasses\clsUtil.cs" />
     <Compile Include="GlobelClasses\clsValidation.cs" />
