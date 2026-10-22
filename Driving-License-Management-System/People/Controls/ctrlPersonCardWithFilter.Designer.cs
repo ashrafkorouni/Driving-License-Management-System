@@ -78,9 +78,8 @@
             // txtFilterValue
             // 
             this.txtFilterValue.Location = new System.Drawing.Point(358, 28);
-            this.txtFilterValue.Multiline = true;
             this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(198, 28);
+            this.txtFilterValue.Size = new System.Drawing.Size(198, 26);
             this.txtFilterValue.TabIndex = 2;
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
