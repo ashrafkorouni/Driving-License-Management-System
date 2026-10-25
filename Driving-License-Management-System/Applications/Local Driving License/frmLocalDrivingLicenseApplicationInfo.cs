@@ -12,9 +12,23 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
 {
     public partial class frmLocalDrivingLicenseApplicationInfo : Form
     {
-        public frmLocalDrivingLicenseApplicationInfo()
+
+        private int _LocalDrivingApplicationID = -1;
+
+        public frmLocalDrivingLicenseApplicationInfo(int LocalDrivingApplicationID)
         {
             InitializeComponent();
+            _LocalDrivingApplicationID = LocalDrivingApplicationID;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmLocalDrivingLicenseApplicationInfo_Load(object sender, EventArgs e)
+        {
+            ctrlDrivingLicenseApplicationInfo1.LoadApplicationInfoByLocalDrivingAppID(_LocalDrivingApplicationID);
         }
     }
 }
