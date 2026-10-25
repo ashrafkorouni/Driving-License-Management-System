@@ -66,7 +66,7 @@ namespace DVLD_Business
         }
 
 
-        public static clsLocalDrivingLicenseApplication FindByLocalDrivingApplicanseID(int LocalDrivingLicenseApplicationID)
+        public static clsLocalDrivingLicenseApplication FindByLocalDrivingApplicenseID(int LocalDrivingLicenseApplicationID)
         {
             int ApplicationID = -1, LicenseClassID = -1;
 
@@ -141,5 +141,11 @@ namespace DVLD_Business
 
             return false;
         }
+
+        public int GetActiveLicenseID()
+        {
+            return clsLicense.GetActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
+        }
+
     }
 }

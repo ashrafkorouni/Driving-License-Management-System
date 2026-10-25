@@ -79,7 +79,7 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
         private void _LoadData()
         {
             ctrlPersonCardWithFilter1.FilterEnabled = false;
-            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingApplicanseID(_LocalDrivingLicenseID);
+            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingApplicenseID(_LocalDrivingLicenseID);
 
             if (_LocalDrivingLicenseApplication == null)
             {
