@@ -18,7 +18,7 @@ namespace Driving_License_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // Application.Run(new frmAddUpdateLocalDrivingLicesnseApplication());
+           // Application.Run(new frmListLocalDrivingLicenseApplications());
             Application.Run(new frmLogin());
         }
     }

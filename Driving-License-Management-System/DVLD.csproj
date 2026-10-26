@@ -83,6 +83,12 @@
     <Compile Include="Applications\Local Driving License\frmAddUpdateLocalDrivingLicesnseApplication.Designer.cs">
       <DependentUpon>frmAddUpdateLocalDrivingLicesnseApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Local Driving License\frmListLocalDrivingLicenseApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Local Driving License\frmListLocalDrivingLicenseApplications.Designer.cs">
+      <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Local Driving License\frmLocalDrivingLicenseApplicationInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local Driving License\frmAddUpdateLocalDrivingLicesnseApplication.resx">
       <DependentUpon>frmAddUpdateLocalDrivingLicesnseApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Local Driving License\frmListLocalDrivingLicenseApplications.resx">
+      <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local Driving License\frmLocalDrivingLicenseApplicationInfo.resx">
       <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>
@@ -517,6 +526,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icons\Local 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Applications.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\New Application 64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

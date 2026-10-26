@@ -163,7 +163,7 @@
             this.sendEmailToolStripMenuItem.Image = global::Driving_License_Management_System.Properties.Resources.send_email_32;
             this.sendEmailToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
             this.sendEmailToolStripMenuItem.Text = "Send E&mail";
             this.sendEmailToolStripMenuItem.Click += new System.EventHandler(this.sendEmailToolStripMenuItem_Click);
             // 
@@ -172,7 +172,7 @@
             this.phoneCallToolStripMenuItem.Image = global::Driving_License_Management_System.Properties.Resources.call_32;
             this.phoneCallToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
-            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
             this.phoneCallToolStripMenuItem.Text = "Phone &Call";
             this.phoneCallToolStripMenuItem.Click += new System.EventHandler(this.phoneCallToolStripMenuItem_Click);
             // 
@@ -200,6 +200,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.Color.White;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::Driving_License_Management_System.Properties.Resources.Close_32;
@@ -209,7 +210,7 @@
             this.btnClose.Size = new System.Drawing.Size(132, 46);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // dgvPeople
@@ -244,9 +245,9 @@
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordsCount.Location = new System.Drawing.Point(119, 567);
             this.lblRecordsCount.Name = "lblRecordsCount";
-            this.lblRecordsCount.Size = new System.Drawing.Size(39, 20);
+            this.lblRecordsCount.Size = new System.Drawing.Size(29, 20);
             this.lblRecordsCount.TabIndex = 9;
-            this.lblRecordsCount.Text = "###";
+            this.lblRecordsCount.Text = "??";
             // 
             // txtFilterValue
             // 
@@ -263,6 +264,7 @@
             this.AcceptButton = this.btnAddNewPerson;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1277, 607);
             this.Controls.Add(this.txtFilterValue);

@@ -79,5 +79,11 @@ namespace Driving_License_Management_System
             frmAddUpdateLocalDrivingLicesnseApplication frm = new frmAddUpdateLocalDrivingLicesnseApplication();
             frm.ShowDialog();
         }
+
+        private void manageApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
+            frm.ShowDialog();
+        }
     }
 }

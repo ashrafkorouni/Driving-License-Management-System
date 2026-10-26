@@ -1,6 +1,7 @@
 ﻿using DVLD_DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +51,13 @@ namespace DVLD_Business
             //this.LicenseClassInfo = clsLicenseClass.Find(LicenseClassID);
             Mode = enMode.Update;
         }
+
+
+        public static DataTable GetAllLocalDrivingLicenseApplication()
+        {
+            return clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseApplications();
+        }
+
 
         private bool _AddNewLocalDrivingLicenseApplication()
         {

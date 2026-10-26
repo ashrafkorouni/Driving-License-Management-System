@@ -52,12 +52,12 @@ namespace Driving_License_Management_System.Applications.Controls
             _ApplicationID = _Application.ApplicationID;
             lblApplicationID.Text = _Application.ApplicationID.ToString();
             lblStatus.Text = _Application.StatusText;
+            lblType.Text = _Application.ApplicationTypeInfo.Title;
             lblFees.Text = _Application.PaidFees.ToString();
-            lblType.Text = _Application.ApplicationTypeInfo.ToString();
-            lblApplicant.Text = _Application.ApplicantPersonID.ToString();
+            lblApplicant.Text = _Application.ApplicantFullName;
             lblDate.Text = clsFormat.DateToShort( _Application.ApplicationDate);
             lblStatusDate.Text = clsFormat.DateToShort(_Application.LastStatusDate);
-            lblCreatedByUser.Text = _Application.CreatedByUserID.ToString();
+            lblCreatedByUser.Text = _Application.CreatedByUserInfo.UserName;
         }
 
         public void ResetApplicationInfo()
