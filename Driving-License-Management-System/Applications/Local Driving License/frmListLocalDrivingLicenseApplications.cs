@@ -108,5 +108,19 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
 
             lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
         }
+
+        private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtFilterValue.Visible = (cbFilterBy.Text != "None");
+
+            if(txtFilterValue.Visible)
+            {
+                txtFilterValue.Text = "";
+                txtFilterValue.Focus();
+            }
+
+            _dtAllLocalDrivingLicenseApplications.DefaultView.RowFilter = "";
+            lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
+        }
     }
 }
