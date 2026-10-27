@@ -167,6 +167,7 @@
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(240, 28);
             this.txtFilterValue.TabIndex = 10;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
             // 
             // frmListLocalDrivingLicenseApplications
             // 

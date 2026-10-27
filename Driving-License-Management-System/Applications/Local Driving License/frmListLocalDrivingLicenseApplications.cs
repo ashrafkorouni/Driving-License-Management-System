@@ -64,5 +64,49 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
         {
             this.Close();
         }
+
+        private void txtFilterValue_TextChanged(object sender, EventArgs e)
+        {
+            string filterColumnn = "";
+
+            switch(cbFilterBy.Text)
+            {
+                case "L.D.L.AppID":
+                    filterColumnn = "LocalDrivingLicenseApplicationID";
+                    break;
+
+                case "National No.":
+                    filterColumnn = "NationalNo";
+                    break;
+
+                case "Full Name":
+                    filterColumnn = "FullName";
+                    break;
+
+                case "Status":
+                    filterColumnn = "Status";
+                    break;
+
+                default:
+                    filterColumnn = "None";
+                    break;
+
+            }
+
+            if(txtFilterValue.Text.Trim() == "" || filterColumnn == "")
+            {
+                _dtAllLocalDrivingLicenseApplications.DefaultView.RowFilter = "";
+                lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
+
+                return;
+            }
+
+            if (filterColumnn == "LocalDrivingLicenseApplicationID")
+                _dtAllLocalDrivingLicenseApplications.DefaultView.RowFilter = string.Format("[{0}] = {1}", filterColumnn, txtFilterValue.Text.Trim());
+            else
+                _dtAllLocalDrivingLicenseApplications.DefaultView.RowFilter = string.Format("[{0}] Like '{1}%'", filterColumnn, txtFilterValue.Text.Trim());
+
+            lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
+        }
     }
 }
