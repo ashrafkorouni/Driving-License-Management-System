@@ -54,7 +54,7 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
                 dgvLocalDrivingLicenseApplications.Columns[4].Width = 155;
 
                 dgvLocalDrivingLicenseApplications.Columns[5].HeaderText = "Passed Tests";
-                dgvLocalDrivingLicenseApplications.Columns[5].Width = 95;
+                dgvLocalDrivingLicenseApplications.Columns[5].Width = 100;
             }
 
             cbFilterBy.SelectedIndex = 0;

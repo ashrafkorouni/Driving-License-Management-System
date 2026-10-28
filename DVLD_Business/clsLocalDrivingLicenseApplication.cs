@@ -150,6 +150,21 @@ namespace DVLD_Business
             return false;
         }
 
+        public bool Delete()
+        {
+            bool isLocalDrivingApplicationDeleted = false;
+            bool isBaseApplicationDeleted = false;
+
+            //First we delete the Local Driving License Application
+            isLocalDrivingApplicationDeleted = clsLocalDrivingLicenseApplicationData.DeleteLocalDrivingLicenseApplication(LocalDrivingLicenseApplicationID);
+
+            if (!isLocalDrivingApplicationDeleted)
+                return false;
+            //Then we delete the base Application
+            isBaseApplicationDeleted = base.Delete();
+            return isBaseApplicationDeleted;
+        }
+
         public int GetActiveLicenseID()
         {
             return clsLicense.GetActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
