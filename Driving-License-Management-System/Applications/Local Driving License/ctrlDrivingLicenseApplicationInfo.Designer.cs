@@ -28,26 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlApplicationBasicInfo1 = new Driving_License_Management_System.Applications.Controls.ctrlApplicationBasicInfo();
             this.gbDrivingLicenseApplicationInfo = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblAppID = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.llShowLicenseInfo = new System.Windows.Forms.LinkLabel();
-            this.lblPassedTests = new System.Windows.Forms.Label();
             this.lblAppliedForLicense = new System.Windows.Forms.Label();
+            this.lblPassedTests = new System.Windows.Forms.Label();
+            this.llShowLicenseInfo = new System.Windows.Forms.LinkLabel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblAppID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ctrlApplicationBasicInfo1 = new Driving_License_Management_System.Applications.Controls.ctrlApplicationBasicInfo();
             this.gbDrivingLicenseApplicationInfo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ctrlApplicationBasicInfo1
-            // 
-            this.ctrlApplicationBasicInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlApplicationBasicInfo1.Location = new System.Drawing.Point(4, 136);
-            this.ctrlApplicationBasicInfo1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctrlApplicationBasicInfo1.Name = "ctrlApplicationBasicInfo1";
-            this.ctrlApplicationBasicInfo1.Size = new System.Drawing.Size(909, 230);
-            this.ctrlApplicationBasicInfo1.TabIndex = 0;
             // 
             // gbDrivingLicenseApplicationInfo
             // 
@@ -65,6 +56,67 @@
             this.gbDrivingLicenseApplicationInfo.TabStop = false;
             this.gbDrivingLicenseApplicationInfo.Text = "Driving License Application Info";
             // 
+            // lblAppliedForLicense
+            // 
+            this.lblAppliedForLicense.AutoSize = true;
+            this.lblAppliedForLicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppliedForLicense.Location = new System.Drawing.Point(222, 83);
+            this.lblAppliedForLicense.Name = "lblAppliedForLicense";
+            this.lblAppliedForLicense.Size = new System.Drawing.Size(49, 20);
+            this.lblAppliedForLicense.TabIndex = 6;
+            this.lblAppliedForLicense.Text = "[???]";
+            // 
+            // lblPassedTests
+            // 
+            this.lblPassedTests.AutoSize = true;
+            this.lblPassedTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassedTests.Location = new System.Drawing.Point(438, 35);
+            this.lblPassedTests.Name = "lblPassedTests";
+            this.lblPassedTests.Size = new System.Drawing.Size(49, 20);
+            this.lblPassedTests.TabIndex = 5;
+            this.lblPassedTests.Text = "[???]";
+            // 
+            // llShowLicenseInfo
+            // 
+            this.llShowLicenseInfo.AutoSize = true;
+            this.llShowLicenseInfo.Location = new System.Drawing.Point(713, 83);
+            this.llShowLicenseInfo.Name = "llShowLicenseInfo";
+            this.llShowLicenseInfo.Size = new System.Drawing.Size(140, 20);
+            this.llShowLicenseInfo.TabIndex = 4;
+            this.llShowLicenseInfo.TabStop = true;
+            this.llShowLicenseInfo.Text = "Show License Info";
+            this.llShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseInfo_LinkClicked);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(301, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Passed Tests:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 83);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(173, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Applied For License:";
+            // 
+            // lblAppID
+            // 
+            this.lblAppID.AutoSize = true;
+            this.lblAppID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppID.Location = new System.Drawing.Point(143, 35);
+            this.lblAppID.Name = "lblAppID";
+            this.lblAppID.Size = new System.Drawing.Size(49, 20);
+            this.lblAppID.TabIndex = 1;
+            this.lblAppID.Text = "[???]";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -75,66 +127,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "D.L.App ID:";
             // 
-            // lblAppID
+            // ctrlApplicationBasicInfo1
             // 
-            this.lblAppID.AutoSize = true;
-            this.lblAppID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppID.Location = new System.Drawing.Point(152, 35);
-            this.lblAppID.Name = "lblAppID";
-            this.lblAppID.Size = new System.Drawing.Size(49, 20);
-            this.lblAppID.TabIndex = 1;
-            this.lblAppID.Text = "[???]";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(318, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Applied For License:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 83);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Passed Tests:";
-            // 
-            // llShowLicenseInfo
-            // 
-            this.llShowLicenseInfo.AutoSize = true;
-            this.llShowLicenseInfo.Location = new System.Drawing.Point(694, 83);
-            this.llShowLicenseInfo.Name = "llShowLicenseInfo";
-            this.llShowLicenseInfo.Size = new System.Drawing.Size(140, 20);
-            this.llShowLicenseInfo.TabIndex = 4;
-            this.llShowLicenseInfo.TabStop = true;
-            this.llShowLicenseInfo.Text = "Show License Info";
-            this.llShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseInfo_LinkClicked);
-            // 
-            // lblPassedTests
-            // 
-            this.lblPassedTests.AutoSize = true;
-            this.lblPassedTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassedTests.Location = new System.Drawing.Point(152, 83);
-            this.lblPassedTests.Name = "lblPassedTests";
-            this.lblPassedTests.Size = new System.Drawing.Size(49, 20);
-            this.lblPassedTests.TabIndex = 5;
-            this.lblPassedTests.Text = "[???]";
-            // 
-            // lblAppliedForLicense
-            // 
-            this.lblAppliedForLicense.AutoSize = true;
-            this.lblAppliedForLicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppliedForLicense.Location = new System.Drawing.Point(516, 35);
-            this.lblAppliedForLicense.Name = "lblAppliedForLicense";
-            this.lblAppliedForLicense.Size = new System.Drawing.Size(49, 20);
-            this.lblAppliedForLicense.TabIndex = 6;
-            this.lblAppliedForLicense.Text = "[???]";
+            this.ctrlApplicationBasicInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlApplicationBasicInfo1.Location = new System.Drawing.Point(4, 136);
+            this.ctrlApplicationBasicInfo1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlApplicationBasicInfo1.Name = "ctrlApplicationBasicInfo1";
+            this.ctrlApplicationBasicInfo1.Size = new System.Drawing.Size(909, 230);
+            this.ctrlApplicationBasicInfo1.TabIndex = 0;
             // 
             // ctrlDrivingLicenseApplicationInfo
             // 

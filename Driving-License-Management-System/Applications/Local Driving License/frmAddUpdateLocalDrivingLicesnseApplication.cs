@@ -146,56 +146,52 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            clsLicenseClass licenseClass = clsLicenseClass.Find(cbLicenseClass.Text);
-            if (licenseClass == null) 
-                return;
+            int LicenseClassID = clsLicenseClass.Find(cbLicenseClass.Text).LicenseClassID;
 
-            int licenseClassID = licenseClass.LicenseClassID;
-            int personID = ctrlPersonCardWithFilter1.PersonID;
 
-            if (_Mode == enMode.AddNew)
+            int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass
+                (ctrlPersonCardWithFilter1.PersonID, clsApplication.enApplicationType.NewDrivingLicense, LicenseClassID);
+
+            if (ActiveApplicationID != -1)
             {
-                int activeApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(
-                    personID, clsApplication.enApplicationType.NewDrivingLicense, licenseClassID);
-
-                if (activeApplicationID != -1)
-                {
-                    MessageBox.Show("Choose another License Class, the selected Person Already have an active application" +
-                        " for the selected class with id=" + activeApplicationID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    cbLicenseClass.Focus();
-                    return;
-                }
-
-                if (clsLicense.IsLicenseExistByPersonID(personID, licenseClassID))
-                {
-                    MessageBox.Show("Person already has a license of this class", "Not allowed",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                _LocalDrivingLicenseApplication.ApplicationDate = DateTime.Now;
-                _LocalDrivingLicenseApplication.ApplicationStatus = clsApplication.enApplicationStatus.New;
-                _LocalDrivingLicenseApplication.CreatedByUserID = clsGlobal.CurrentUser.UserID;
+                MessageBox.Show("Choose another License Class, the selected Person Already have an active application for the selected class with id=" + ActiveApplicationID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbLicenseClass.Focus();
+                return;
             }
 
-            _LocalDrivingLicenseApplication.ApplicantPersonID = personID;
-            _LocalDrivingLicenseApplication.ApplicationTypeID = (int)clsApplication.enApplicationType.NewDrivingLicense;
+
+            //check if user already have issued license of the same driving  class.
+            if (clsLicense.IsLicenseExistByPersonID(ctrlPersonCardWithFilter1.PersonID, LicenseClassID))
+            {
+
+                MessageBox.Show("Person already have a license with the same applied driving class, Choose diffrent driving class", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _LocalDrivingLicenseApplication.ApplicantPersonID = ctrlPersonCardWithFilter1.PersonID; ;
+            _LocalDrivingLicenseApplication.ApplicationDate = DateTime.Now;
+            _LocalDrivingLicenseApplication.ApplicationTypeID = 1;
+            _LocalDrivingLicenseApplication.ApplicationStatus = clsApplication.enApplicationStatus.New;
             _LocalDrivingLicenseApplication.LastStatusDate = DateTime.Now;
             _LocalDrivingLicenseApplication.PaidFees = Convert.ToSingle(lblFees.Text);
-            _LocalDrivingLicenseApplication.LicenseClassID = licenseClassID;
+            _LocalDrivingLicenseApplication.CreatedByUserID = clsGlobal.CurrentUser.UserID;
+            _LocalDrivingLicenseApplication.LicenseClassID = LicenseClassID;
+
 
             if (_LocalDrivingLicenseApplication.Save())
             {
-                lblLocalDrivingLicebseApplicationID.Text =
-                    _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
+                lblLocalDrivingLicebseApplicationID.Text = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
+                //change form mode to update.
                 _Mode = enMode.Update;
                 lblTitle.Text = "Update Local Driving License Application";
-                MessageBox.Show("Data Saved Successfully.", "Saved",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
-                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
         }
 
         private void frmAddUpdateLocalDrivingLicesnseApplication_Activated(object sender, EventArgs e)
