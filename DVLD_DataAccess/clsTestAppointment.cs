@@ -208,5 +208,57 @@ namespace DVLD_DataAccess
 
             return dataTable;
         }
+
+        public static int AddNewTestAppointment(
+            int LocalDrivingLicenseApplicationID, int TestTypeID, DateTime AppointmentDate, float PaidFees,
+            int CreatedByUserID, int RetakeTestApplicationID)
+        {
+            int TestAppointmentID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"INSERT INTO TestAppointments (TestTypeID, LocalDrivingLicenseApplicationID, 
+                            AppointmentDate, PaidFees, CreatedByUserID, RetakeTestApplicationID)
+                            VALUES(@TestTypeID, @LocalDrivingLicenseApplicationID, 
+                            @AppointmentDate, @PaidFees, @CreatedByUserID, @RetakeTestApplicationID);
+                            SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+            command.Parameters.AddWithValue("@PaidFees", PaidFees);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+            if (RetakeTestApplicationID == -1)
+
+                command.Parameters.AddWithValue("@RetakeTestApplicationID", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@RetakeTestApplicationID", RetakeTestApplicationID);
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                    TestAppointmentID = insertedID;
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return TestAppointmentID;
+        }
     }
 }
