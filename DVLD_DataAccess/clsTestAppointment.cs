@@ -164,5 +164,49 @@ namespace DVLD_DataAccess
             }
             return dataTable;
         }
+
+
+        public static DataTable GetApplicationTestAppointmentPerTestType(
+            int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT TestAppointmentID, AppointmentDate, PaidFees, IsLocked
+                             FROM TestAppointments
+                             WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                             AND TestTypeID = @TestTypeID
+                             ORDER BY AppointmentDate DESC";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                // Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dataTable;
+        }
     }
 }
