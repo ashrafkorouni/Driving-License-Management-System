@@ -316,5 +316,40 @@ namespace DVLD_DataAccess
 
             return (rowsAffected > 0);
         }
+
+        public static int GetTestID(int TestAppointmentID)
+        {
+            int TestID = -1;
+
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TestID FROM Tests WHERE TestAppointmentID = @TestAppointmentID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int FoundID))
+                {
+                    TestID = FoundID;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return TestID;
+        }
     }
 }
