@@ -218,9 +218,9 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"INSERT INTO TestAppointments (TestTypeID, LocalDrivingLicenseApplicationID, 
-                            AppointmentDate, PaidFees, CreatedByUserID, RetakeTestApplicationID)
+                            AppointmentDate, PaidFees, CreatedByUserID, IsLocked, RetakeTestApplicationID)
                             VALUES(@TestTypeID, @LocalDrivingLicenseApplicationID, 
-                            @AppointmentDate, @PaidFees, @CreatedByUserID, @RetakeTestApplicationID);
+                            @AppointmentDate, @PaidFees, @CreatedByUserID, 0, @RetakeTestApplicationID);
                             SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -259,6 +259,62 @@ namespace DVLD_DataAccess
 
 
             return TestAppointmentID;
+        }
+
+
+        public static bool UpdateTestAppointment(
+            int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID, 
+            DateTime AppointmentDate, float PaidFees, int CreatedByUserID, 
+            bool IsLocked, int RetakeTestApplicationID)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"UPDATE TestAppointments 
+                             SET TestTypeID = @TestTypeID,
+                                 LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID,
+                                 AppointmentDate = @AppointmentDate,
+                                 PaidFees = @PaidFees,
+                                 CreatedByUserID = @CreatedByUserID,
+                                 IsLocked = @IsLocked,
+                                 RetakeTestApplicationID = @RetakeTestApplicationID
+                                 WHERE TestAppointmentID = @TestAppointmentID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+            command.Parameters.AddWithValue("@PaidFees", PaidFees);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+            command.Parameters.AddWithValue("@IsLocked", IsLocked);
+
+            if (RetakeTestApplicationID == -1)
+
+                command.Parameters.AddWithValue("@RetakeTestApplicationID", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@RetakeTestApplicationID", RetakeTestApplicationID);
+
+            try
+            {
+                connection.Open();
+
+                rowsAffected = command.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            finally 
+            {
+                connection.Close(); 
+            }
+
+            return (rowsAffected > 0);
         }
     }
 }
