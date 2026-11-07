@@ -68,7 +68,6 @@ namespace DVLD_Business
                 this.IsLocked, this.RetakeTestApplicationID);
         }
 
-
         public bool Save()
         {
             switch(Mode)
@@ -89,6 +88,27 @@ namespace DVLD_Business
 
             }
             return false;
+        }
+
+        public static clsTestAppointment Find(int TestAppointmentID)
+        {
+            int LocalDrivingLicenseApplicationID = -1;int TestTypeID = 1;
+            DateTime AppointmentDate = DateTime.Now; float PaidFees = 0;
+            int CreatedByUserID = -1;int RetakeTestApplicationID = -1;
+            bool IsLocked = false;
+
+            bool isFound = clsTestAppointmentData.GetTestAppointmentInfoByID(TestAppointmentID, ref TestTypeID, ref LocalDrivingLicenseApplicationID,
+                ref AppointmentDate, ref PaidFees, ref CreatedByUserID, ref IsLocked, ref RetakeTestApplicationID);
+
+            if(isFound)
+            {
+                return new clsTestAppointment(TestAppointmentID, (clsTestType.enTestType)TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate,
+                    PaidFees, CreatedByUserID, IsLocked, RetakeTestApplicationID);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
