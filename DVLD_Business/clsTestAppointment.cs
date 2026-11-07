@@ -1,6 +1,7 @@
 ﻿using DVLD_DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -130,6 +131,17 @@ namespace DVLD_Business
             {
                 return null;
             }
+        }
+
+
+        public static DataTable GetAllAppointments()
+        {
+            return clsTestAppointmentData.GetAllTestAppointments();
+        }
+
+        public DataTable GetApplicationTestAppointmentsPerTestType(clsTestType.enTestType TestTypeID)
+        {
+            return clsTestAppointmentData.GetApplicationTestAppointmentPerTestType(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
     }
 }
