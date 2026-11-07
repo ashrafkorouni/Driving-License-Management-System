@@ -10,8 +10,8 @@ namespace DVLD_DataAccess
 {
     public class clsTestAppointmentData
     {
-        public static bool GetTestAppointmentInfoByID(int TestAppointmentID, ref int TestTypeID, 
-            ref int LocalDrivingLicenseApplicationID, ref DateTime AppointmentDate, ref float PaidFees, 
+        public static bool GetTestAppointmentInfoByID(int TestAppointmentID, ref int TestTypeID,
+            ref int LocalDrivingLicenseApplicationID, ref DateTime AppointmentDate, ref float PaidFees,
             ref int CreatedByUserID, ref bool IsLocked, ref int RetakeTestApplicationID)
         {
             bool isFound = false;
@@ -69,8 +69,8 @@ namespace DVLD_DataAccess
 
 
         public static bool GetLastTestAppointment(
-            int LocalDrivingLicenseApplicationID, int TestTypeID, 
-            ref int TestAppointmentID, ref DateTime AppointmentDate, ref float PaidFees, 
+            int LocalDrivingLicenseApplicationID, int TestTypeID,
+            ref int TestAppointmentID, ref DateTime AppointmentDate, ref float PaidFees,
             ref int CreatedByUserID, ref bool IsLocked, ref int RetakeTestApplicationID)
         {
             bool isFound = false;
@@ -263,8 +263,8 @@ namespace DVLD_DataAccess
 
 
         public static bool UpdateTestAppointment(
-            int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID, 
-            DateTime AppointmentDate, float PaidFees, int CreatedByUserID, 
+            int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID,
+            DateTime AppointmentDate, float PaidFees, int CreatedByUserID,
             bool IsLocked, int RetakeTestApplicationID)
         {
             int rowsAffected = 0;
@@ -309,9 +309,9 @@ namespace DVLD_DataAccess
             {
                 return false;
             }
-            finally 
+            finally
             {
-                connection.Close(); 
+                connection.Close();
             }
 
             return (rowsAffected > 0);
