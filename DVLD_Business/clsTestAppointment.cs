@@ -149,6 +149,13 @@ namespace DVLD_Business
         }
 
 
+        public static DataTable GetApplicationTestAppointmentsPerTestType(
+            int LocalDrivingLicenseApplicationID, clsTestType.enTestType TestTypeID)
+        {
+            return clsTestAppointmentData.GetApplicationTestAppointmentPerTestType(
+                LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
         private int _GetTestID()
         {
             return clsTestAppointmentData.GetTestID(this.TestAppointmentID);
