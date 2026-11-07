@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,6 +50,45 @@ namespace DVLD_Business
             this.RetakeTestAppInfo = clsApplication.FindBaseApplication(RetakeTestApplicationID);
 
             Mode = enMode.Update;
+        }
+
+
+        private bool _AddNewTestAppointment()
+        {
+            this.TestAppointmentID = clsTestAppointmentData.AddNewTestAppointment(this.LocalDrivingLicenseApplicationID, (int)this.TestTypeID, 
+                this.AppointmentDate, this.PaidFees, this.CreatedByUserID, this.RetakeTestApplicationID);
+
+            return (this.TestAppointmentID != -1);
+        }
+
+        private bool _UpdateTestAppointment()
+        {
+            return clsTestAppointmentData.UpdateTestAppointment(this.TestAppointmentID, (int)this.TestTypeID,
+                this.LocalDrivingLicenseApplicationID, this.AppointmentDate, this.PaidFees, this.CreatedByUserID,
+                this.IsLocked, this.RetakeTestApplicationID);
+        }
+
+
+        public bool Save()
+        {
+            switch(Mode)
+            {
+                case enMode.AddNew:
+                    if(_AddNewTestAppointment())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case enMode.Update:
+
+                    return _UpdateTestAppointment();
+
+            }
+            return false;
         }
     }
 }
