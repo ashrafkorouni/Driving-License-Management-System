@@ -23,6 +23,10 @@ namespace DVLD_Business
         public int RetakeTestApplicationID { set; get; }
         public clsApplication RetakeTestAppInfo { set; get; }
 
+        public int TestID
+        {
+            get { return _GetTestID(); }
+        }
       
         public clsTestAppointment() 
         {
@@ -142,6 +146,12 @@ namespace DVLD_Business
         public DataTable GetApplicationTestAppointmentsPerTestType(clsTestType.enTestType TestTypeID)
         {
             return clsTestAppointmentData.GetApplicationTestAppointmentPerTestType(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+
+        private int _GetTestID()
+        {
+            return clsTestAppointmentData.GetTestID(this.TestAppointmentID);
         }
     }
 }
