@@ -295,7 +295,6 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
-
         public static byte TotalTrialsPerTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
             byte TotalTrials = 0;
