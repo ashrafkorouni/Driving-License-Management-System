@@ -284,6 +284,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                return false;
                 //Console.WriteLine("Error: " + ex.Message);
             }
             finally
@@ -292,6 +293,49 @@ namespace DVLD_DataAccess
             }
 
             return isFound;
+        }
+
+
+        public static byte TotalTrialsPerTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            byte TotalTrials = 0;
+
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT COUNT(TestID)
+                              FROM LocalDrivingLicenseApplications 
+                              INNER JOIN TestAppointments ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID
+                              INNER JOIN Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
+                              WHERE (LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) 
+                              AND(TestAppointments.TestTypeID = @TestTypeID)";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    TotalTrials = Convert.ToByte(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return TotalTrials;
         }
 
     }
