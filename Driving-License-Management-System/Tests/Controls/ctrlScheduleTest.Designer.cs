@@ -29,47 +29,47 @@
         private void InitializeComponent()
         {
             this.gbTestType = new System.Windows.Forms.GroupBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lblDrivingClass = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblLocalDrivingLicenseAppID = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTrial = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblFees = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dtpTestDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblUserMessage = new System.Windows.Forms.Label();
             this.gbRetakeTestInfo = new System.Windows.Forms.GroupBox();
             this.lblTotalFees = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.lblRetakeAppFees = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblRetakeTestAppID = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pbTestTypeImage = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pbTestTypeImage = new System.Windows.Forms.PictureBox();
             this.gbTestType.SuspendLayout();
-            this.gbRetakeTestInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.gbRetakeTestInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -107,6 +107,16 @@
             this.gbTestType.TabStop = false;
             this.gbTestType.Text = "Test Type";
             // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::Driving_License_Management_System.Properties.Resources.License_Type_32;
+            this.pictureBox7.Location = new System.Drawing.Point(142, 337);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 205;
+            this.pictureBox7.TabStop = false;
+            // 
             // lblDrivingClass
             // 
             this.lblDrivingClass.AutoSize = true;
@@ -128,6 +138,16 @@
             this.label10.Size = new System.Drawing.Size(81, 20);
             this.label10.TabIndex = 203;
             this.label10.Text = "D. Class:";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Driving_License_Management_System.Properties.Resources.icons8_id_24;
+            this.pictureBox4.Location = new System.Drawing.Point(142, 301);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 202;
+            this.pictureBox4.TabStop = false;
             // 
             // lblLocalDrivingLicenseAppID
             // 
@@ -162,6 +182,17 @@
             this.lblFullName.TabIndex = 199;
             this.lblFullName.Text = "[???????]";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Driving_License_Management_System.Properties.Resources.User_32__2;
+            this.pictureBox2.Location = new System.Drawing.Point(142, 373);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 198;
+            this.pictureBox2.TabStop = false;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -195,6 +226,17 @@
             this.label5.TabIndex = 194;
             this.label5.Text = "Trial:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Driving_License_Management_System.Properties.Resources.Count_32;
+            this.pictureBox1.Location = new System.Drawing.Point(142, 409);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 195;
+            this.pictureBox1.TabStop = false;
+            // 
             // lblFees
             // 
             this.lblFees.AutoSize = true;
@@ -216,6 +258,17 @@
             this.label2.Size = new System.Drawing.Size(54, 20);
             this.label2.TabIndex = 191;
             this.label2.Text = "Fees:";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Driving_License_Management_System.Properties.Resources.icons8_money_32;
+            this.pictureBox3.Location = new System.Drawing.Point(142, 481);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 192;
+            this.pictureBox3.TabStop = false;
             // 
             // dtpTestDate
             // 
@@ -239,6 +292,17 @@
             this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 188;
             this.label1.Text = "Date:";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::Driving_License_Management_System.Properties.Resources.Calendar_32;
+            this.pictureBox8.Location = new System.Drawing.Point(142, 445);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 189;
+            this.pictureBox8.TabStop = false;
             // 
             // lblUserMessage
             // 
@@ -291,6 +355,17 @@
             this.label9.TabIndex = 213;
             this.label9.Text = "Total Fees:";
             // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::Driving_License_Management_System.Properties.Resources.icons8_money_32__1_;
+            this.pictureBox9.Location = new System.Drawing.Point(408, 40);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 214;
+            this.pictureBox9.TabStop = false;
+            // 
             // lblRetakeAppFees
             // 
             this.lblRetakeAppFees.AutoSize = true;
@@ -312,6 +387,27 @@
             this.label7.Size = new System.Drawing.Size(109, 20);
             this.label7.TabIndex = 210;
             this.label7.Text = "R.App.Fees:";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::Driving_License_Management_System.Properties.Resources.icons8_money_32;
+            this.pictureBox6.Location = new System.Drawing.Point(142, 40);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 211;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::Driving_License_Management_System.Properties.Resources.icons8_id_24;
+            this.pictureBox5.Location = new System.Drawing.Point(142, 76);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 209;
+            this.pictureBox5.TabStop = false;
             // 
             // lblRetakeTestAppID
             // 
@@ -335,6 +431,17 @@
             this.label4.TabIndex = 207;
             this.label4.Text = "R.Test.App.ID";
             // 
+            // pbTestTypeImage
+            // 
+            this.pbTestTypeImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbTestTypeImage.Image = global::Driving_License_Management_System.Properties.Resources.driving_test_512;
+            this.pbTestTypeImage.Location = new System.Drawing.Point(148, 21);
+            this.pbTestTypeImage.Name = "pbTestTypeImage";
+            this.pbTestTypeImage.Size = new System.Drawing.Size(225, 177);
+            this.pbTestTypeImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTestTypeImage.TabIndex = 0;
+            this.pbTestTypeImage.TabStop = false;
+            // 
             // lblTitle
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -348,7 +455,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.BackColor = System.Drawing.Color.Gainsboro;
             this.btnSave.Location = new System.Drawing.Point(367, 664);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(137, 38);
@@ -356,117 +463,11 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::Driving_License_Management_System.Properties.Resources.License_Type_32;
-            this.pictureBox7.Location = new System.Drawing.Point(142, 337);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 205;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Driving_License_Management_System.Properties.Resources.icons8_id_24;
-            this.pictureBox4.Location = new System.Drawing.Point(142, 301);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 202;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Driving_License_Management_System.Properties.Resources.User_32__2;
-            this.pictureBox2.Location = new System.Drawing.Point(142, 373);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 198;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Driving_License_Management_System.Properties.Resources.Count_32;
-            this.pictureBox1.Location = new System.Drawing.Point(142, 409);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 195;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Driving_License_Management_System.Properties.Resources.icons8_money_32;
-            this.pictureBox3.Location = new System.Drawing.Point(142, 481);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 192;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::Driving_License_Management_System.Properties.Resources.Calendar_32;
-            this.pictureBox8.Location = new System.Drawing.Point(142, 445);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 189;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::Driving_License_Management_System.Properties.Resources.icons8_money_32__1_;
-            this.pictureBox9.Location = new System.Drawing.Point(408, 40);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 214;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::Driving_License_Management_System.Properties.Resources.icons8_money_32;
-            this.pictureBox6.Location = new System.Drawing.Point(142, 40);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 211;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::Driving_License_Management_System.Properties.Resources.icons8_id_24;
-            this.pictureBox5.Location = new System.Drawing.Point(142, 76);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 209;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pbTestTypeImage
-            // 
-            this.pbTestTypeImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbTestTypeImage.Image = global::Driving_License_Management_System.Properties.Resources.driving_test_512;
-            this.pbTestTypeImage.Location = new System.Drawing.Point(148, 21);
-            this.pbTestTypeImage.Name = "pbTestTypeImage";
-            this.pbTestTypeImage.Size = new System.Drawing.Size(225, 177);
-            this.pbTestTypeImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbTestTypeImage.TabIndex = 0;
-            this.pbTestTypeImage.TabStop = false;
-            // 
             // ctrlScheduleTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gbTestType);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -475,14 +476,14 @@
             this.Size = new System.Drawing.Size(533, 722);
             this.gbTestType.ResumeLayout(false);
             this.gbTestType.PerformLayout();
-            this.gbRetakeTestInfo.ResumeLayout(false);
-            this.gbRetakeTestInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.gbRetakeTestInfo.ResumeLayout(false);
+            this.gbRetakeTestInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

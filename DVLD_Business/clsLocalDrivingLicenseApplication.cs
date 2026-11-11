@@ -17,6 +17,8 @@ namespace DVLD_Business
 
         public int LicenseClassID { get; set; }
 
+        public clsLicenseClass LicenseClassInfo;
+
         public string PersonFullName
         {
             get
@@ -48,7 +50,7 @@ namespace DVLD_Business
             this.PaidFees = PaidFees;
             this.CreatedByUserID = CreatedByUserID;
             this.LicenseClassID = LicenseClassID;
-            //this.LicenseClassInfo = clsLicenseClass.Find(LicenseClassID);
+            this.LicenseClassInfo = clsLicenseClass.Find(LicenseClassID);
             Mode = enMode.Update;
         }
 
