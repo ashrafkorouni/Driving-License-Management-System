@@ -182,5 +182,20 @@ namespace DVLD_Business
             return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
 
+        public static bool IsThereAnActiveSceduleTest(int LocalDrivingLicenseApplicationID, clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduleTest(LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public bool IsThereAnActiveSceduleTest(clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduleTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public bool DoesPassTestType(clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.DoesPassTestType(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
     }
 }

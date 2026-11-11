@@ -78,14 +78,14 @@ namespace Driving_License_Management_System.Tests.Controls
 
             _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingApplicenseID(LocalDrivingLicenseApplicationID);
 
-            if(_LocalDrivingLicenseApplication == null)
+            if (_LocalDrivingLicenseApplication == null)
             {
                 MessageBox.Show("Application Was Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnSave.Enabled = false;
                 return;
             }
 
-            if(_LocalDrivingLicenseApplication.DoesAttendTestType(_TestTypeID))
+            if (_LocalDrivingLicenseApplication.DoesAttendTestType(_TestTypeID))
             {
                 _CreationMode = enCreationMode.RetakeTestSchedule;
             }
@@ -94,7 +94,7 @@ namespace Driving_License_Management_System.Tests.Controls
                 _CreationMode = enCreationMode.FirstTimeSchedule;
             }
 
-            if(_CreationMode == enCreationMode.RetakeTestSchedule)
+            if (_CreationMode == enCreationMode.RetakeTestSchedule)
             {
                 lblRetakeAppFees.Text = clsApplicationType.Find((int)clsApplication.enApplicationType.RetakeTest).Fees.ToString();
                 gbRetakeTestInfo.Enabled = true;
@@ -115,7 +115,7 @@ namespace Driving_License_Management_System.Tests.Controls
 
             lblTrial.Text = _LocalDrivingLicenseApplication.TotalTrialsPerTest(_TestTypeID).ToString();
 
-            if(_Mode == enMode.AddNew)
+            if (_Mode == enMode.AddNew)
             {
                 lblFees.Text = clsTestType.Find(_TestTypeID).TestTypeFees.ToString();
                 dtpTestDate.MinDate = DateTime.Now;
@@ -131,10 +131,45 @@ namespace Driving_License_Management_System.Tests.Controls
 
             lblTotalFees.Text = (Convert.ToSingle(lblFees.Text) + Convert.ToSingle(lblRetakeAppFees.Text)).ToString();
 
+            if (!_HandleActiveTestAppointmentConstraint())
+                return;
+
+            if (!_HandleAppointmentLockedConstraint())
+                return;
+
+
 
         }
 
+        private bool _HandleAppointmentLockedConstraint()
+        {
+            //if appointment is locked that means the person already sat for this test
+            //we cannot update locked appointment
+            if (_TestAppointment.IsLocked)
+            {
+                lblUserMessage.Visible = true;
+                lblUserMessage.Text = "Person already sat for the test, appointment locked";
+                btnSave.Enabled = false;
+                dtpTestDate.Enabled = false;
+                return false;
+            }
+            else
+                lblUserMessage.Visible = false;
 
+            return true;
+        }
+
+        private bool _HandleActiveTestAppointmentConstraint()
+        {
+            if (_Mode == enMode.AddNew && clsLocalDrivingLicenseApplication.IsThereAnActiveSceduleTest(_LocalDrivingLicenseApplicationID, _TestTypeID))
+            {
+                lblUserMessage.Text = "Person Already have an active appointment for this test";
+                btnSave.Enabled = false;
+                dtpTestDate.Enabled = false;
+                return false;
+            }
+            return true;
+        }
         private bool _LoadTestAppointmentData()
         {
             _TestAppointment = clsTestAppointment.Find(_TestAppointmentID);
@@ -156,7 +191,7 @@ namespace Driving_License_Management_System.Tests.Controls
 
             dtpTestDate.Value = _TestAppointment.AppointmentDate;
 
-            if(_TestAppointment.RetakeTestApplicationID == -1)
+            if (_TestAppointment.RetakeTestApplicationID == -1)
             {
                 lblRetakeAppFees.Text = "0";
                 lblRetakeTestAppID.Text = "N/A";

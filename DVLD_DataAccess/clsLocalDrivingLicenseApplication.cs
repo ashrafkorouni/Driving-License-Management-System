@@ -377,5 +377,48 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
+        public static bool DoesPassTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            bool testResult = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT TOP 1 Tests.TestResult 
+                             FROM TestAppointments 
+                             INNER JOIN Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID 
+                             WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                              AND TestAppointments.TestTypeID = @TestTypeID 
+                             ORDER BY TestAppointments.TestAppointmentID DESC;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && bool.TryParse(result.ToString(), out bool returnedResult))
+                {
+                    testResult = returnedResult;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return testResult;
+
+        }
+
+
     }
 }
