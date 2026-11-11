@@ -245,9 +245,9 @@ namespace DVLD_DataAccess
             }
             finally
             {
-                connection.Close();     
+                connection.Close();
             }
-            
+
             return (rowsAffected > 0);
         }
 
@@ -335,6 +335,46 @@ namespace DVLD_DataAccess
             }
 
             return TotalTrials;
+        }
+
+        public static bool IsThereAnActiveScheduleTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT 1 
+                            FROM TestAppointments 
+                            WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                            AND TestTypeID = @TestTypeID 
+                            AND IsLocked = 0";
+
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null)
+                {
+                    isFound = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isFound;
         }
 
     }
