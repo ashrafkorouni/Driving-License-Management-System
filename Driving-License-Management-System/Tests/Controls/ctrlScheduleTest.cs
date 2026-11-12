@@ -1,4 +1,5 @@
-﻿using Driving_License_Management_System.Properties;
+﻿using Driving_License_Management_System.GlobelClasses;
+using Driving_License_Management_System.Properties;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -142,6 +143,35 @@ namespace Driving_License_Management_System.Tests.Controls
 
         }
 
+        private bool _HandleRetakeApplication()
+        {
+            if (_Mode == enMode.AddNew && _CreationMode == enCreationMode.RetakeTestSchedule)
+            {
+
+                clsApplication application = new clsApplication();
+
+
+                application.ApplicantPersonID = _LocalDrivingLicenseApplication.ApplicantPersonID;
+                application.ApplicationDate = DateTime.Now;
+                application.ApplicationTypeID = (int)clsApplication.enApplicationType.RetakeTest;
+                application.PaidFees = clsApplicationType.Find((int)clsApplication.enApplicationType.RetakeTest).Fees;
+                application.LastStatusDate = DateTime.Now;
+                application.CreatedByUserID = clsGlobal.CurrentUser.UserID;
+                application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+
+                if(!application.Save())
+                {
+                    _TestAppointment.RetakeTestApplicationID = -1;
+                    MessageBox.Show("Faild to create application", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                _TestAppointment.RetakeTestApplicationID = application.ApplicationID;
+
+            }
+            return true;
+        }
+
         private bool _HandlePreviousTestConstraint()
         {
             //we need to make sure that this person passed the prvious required test before apply to the new test.
@@ -261,6 +291,29 @@ namespace Driving_License_Management_System.Tests.Controls
             }
             return true;
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!_HandleRetakeApplication())
+                return;
+
+            _TestAppointment.TestTypeID = _TestTypeID;
+            _TestAppointment.LocalDrivingLicenseApplicationID = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID;
+            _TestAppointment.PaidFees = Convert.ToSingle(lblFees.Text);
+            _TestAppointment.AppointmentDate = dtpTestDate.Value;
+            _TestAppointment.CreatedByUserID = clsGlobal.CurrentUser.UserID;
+
+            if(_TestAppointment.Save())
+            {
+                _Mode = enMode.Update;
+                lblRetakeTestAppID.Text = _TestAppointment.RetakeTestApplicationID.ToString();
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
