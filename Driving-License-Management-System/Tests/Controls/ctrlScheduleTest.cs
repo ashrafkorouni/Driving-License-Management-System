@@ -162,7 +162,7 @@ namespace Driving_License_Management_System.Tests.Controls
                 if(!application.Save())
                 {
                     _TestAppointment.RetakeTestApplicationID = -1;
-                    MessageBox.Show("Faild to create application", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to create application", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
