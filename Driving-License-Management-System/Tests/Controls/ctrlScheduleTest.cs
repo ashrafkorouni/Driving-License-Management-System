@@ -137,8 +137,63 @@ namespace Driving_License_Management_System.Tests.Controls
             if (!_HandleAppointmentLockedConstraint())
                 return;
 
+            if (!_HandlePreviousTestConstraint())
+                return;
+
+        }
+
+        private bool _HandlePreviousTestConstraint()
+        {
+            //we need to make sure that this person passed the prvious required test before apply to the new test.
+
+            switch (TestTypeID)
+            {
+                case clsTestType.enTestType.VisionTest:
+                    //in this case no required prvious test to pass.
+                    lblUserMessage.Visible = false;
+                    btnSave.Enabled = true;
+                    dtpTestDate.Enabled = true;
+                    return true;
+
+                case clsTestType.enTestType.WrittenTest:
+                    if(!_LocalDrivingLicenseApplication.DoesPassTestType(clsTestType.enTestType.VisionTest))
+                    {
+                        lblUserMessage.Visible = true;
+                        lblUserMessage.Text = "Cannot Schedule, Vision test should be passed first.";
+                        btnSave.Enabled = false;
+                        dtpTestDate.Enabled = false;
+                        return false;
+                    }
+                    else
+                    {
+                        lblUserMessage.Visible = false;
+                        btnSave.Enabled = true;
+                        dtpTestDate.Enabled = true;
+                    }
+
+                    return true;
 
 
+                case clsTestType.enTestType.StreetTest:
+                    if(!_LocalDrivingLicenseApplication.DoesPassTestType(clsTestType.enTestType.WrittenTest))
+                    {
+                        lblUserMessage.Visible = true;
+                        lblUserMessage.Text = "Cannot Schedule, Written test should be passed first.";
+                        btnSave.Enabled = false;
+                        dtpTestDate.Enabled = false;
+                        return false;
+                    }
+                    else
+                    {
+                        lblUserMessage.Visible = false;
+                        btnSave.Enabled = true;
+                        dtpTestDate.Enabled = true;
+                    }
+
+                    return true;
+
+            }
+            return true;
         }
 
         private bool _HandleAppointmentLockedConstraint()
@@ -170,6 +225,7 @@ namespace Driving_License_Management_System.Tests.Controls
             }
             return true;
         }
+
         private bool _LoadTestAppointmentData()
         {
             _TestAppointment = clsTestAppointment.Find(_TestAppointmentID);
