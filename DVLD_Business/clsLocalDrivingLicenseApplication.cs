@@ -187,7 +187,7 @@ namespace DVLD_Business
             return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduleTest(LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
 
-        public bool IsThereAnActiveSceduleTest(clsTestType.enTestType TestTypeID)
+        public bool IsThereAnActiveScheduleTest(clsTestType.enTestType TestTypeID)
         {
             return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduleTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
@@ -195,6 +195,11 @@ namespace DVLD_Business
         public bool DoesPassTestType(clsTestType.enTestType TestTypeID)
         {
             return clsLocalDrivingLicenseApplicationData.DoesPassTestType(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public clsTest GetLastTestPerTestType(clsTestType.enTestType TestTypeID)
+        {
+            return clsTest.FindLastTestPerPersonAndLicenseClass(this.ApplicantPersonID, this.LicenseClassID, TestTypeID);
         }
 
     }

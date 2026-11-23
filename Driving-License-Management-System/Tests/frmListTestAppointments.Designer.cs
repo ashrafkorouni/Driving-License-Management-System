@@ -155,6 +155,7 @@
             this.btnAddNewAppointment.Size = new System.Drawing.Size(64, 38);
             this.btnAddNewAppointment.TabIndex = 140;
             this.btnAddNewAppointment.UseVisualStyleBackColor = true;
+            this.btnAddNewAppointment.Click += new System.EventHandler(this.btnAddNewAppointment_Click);
             // 
             // pbTestTypeImage
             // 

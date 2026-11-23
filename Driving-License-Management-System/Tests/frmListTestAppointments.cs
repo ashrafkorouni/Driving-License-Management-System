@@ -102,5 +102,42 @@ namespace Driving_License_Management_System.Tests
         {
             this.Close();
         }
+
+        private void btnAddNewAppointment_Click(object sender, EventArgs e)
+        {
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication =
+                clsLocalDrivingLicenseApplication.FindByLocalDrivingApplicenseID(_LocalDrivingLicenseApplicationID);
+
+            if (LocalDrivingLicenseApplication.IsThereAnActiveScheduleTest(_TestTypeID))
+            {
+                MessageBox.Show("Person Already have an active appointment for this test, You cannot add new appointment", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            clsTest LastTest = LocalDrivingLicenseApplication.GetLastTestPerTestType(_TestTypeID);
+
+            // That's mean there is not Test Appointment for this test type before.
+            if (LastTest == null)
+            {
+                frmScheduleTest frm = new frmScheduleTest(_LocalDrivingLicenseApplicationID, _TestTypeID);
+                frm.ShowDialog();
+                frmListTestAppointments_Load(null, null);
+                return;
+            }
+
+            // When the test Passed
+            if (LastTest.TestResult == true)
+            {
+                MessageBox.Show("This person already passed this test before, you can only retake faild test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            frmScheduleTest frm2 = new frmScheduleTest(_LocalDrivingLicenseApplicationID, _TestTypeID);
+            frm2.ShowDialog();
+            frmListTestAppointments_Load(null, null);
+            
+
+
+        }
     }
 }

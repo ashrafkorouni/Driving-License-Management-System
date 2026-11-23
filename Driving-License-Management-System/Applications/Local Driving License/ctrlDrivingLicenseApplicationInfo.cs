@@ -75,7 +75,7 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
             lblAppliedForLicense.Text = clsLicenseClass.Find(_LocalDrivingLicenseApplication.LicenseClassID).ClassName;
 
             // Temporarily hardcoded until the Test Management module is built.
-            lblPassedTests.Text = "0/3";
+            lblPassedTests.Text = clsTest.GetPassedTestCount(_LocalDrivingLicenseApplicationID).ToString() + "/3";
 
             ctrlApplicationBasicInfo1.LoadApplicationInfo(_LocalDrivingLicenseApplication.ApplicationID);
         }
