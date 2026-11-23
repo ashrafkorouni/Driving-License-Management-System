@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using Driving_License_Management_System.Tests;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -200,6 +201,32 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
             //we allow number incase L.D.L.AppID id is selected.
             if (cbFilterBy.Text == "L.D.L.AppID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void _ScheduleTest(clsTestType.enTestType TestTypeID)
+        {
+            int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            frmListTestAppointments frm  = new frmListTestAppointments(LocalDrivingLicenseApplicationID, TestTypeID);
+            frm.ShowDialog();
+
+            frmListLocalDrivingLicenseApplications_Load(null, null);
+
+        }
+
+
+        private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestType.enTestType.VisionTest);
+        }
+
+        private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestType.enTestType.WrittenTest);
+        }
+
+        private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestType.enTestType.StreetTest);
         }
     }
 }
