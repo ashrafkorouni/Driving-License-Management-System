@@ -55,12 +55,6 @@
     <Compile Include="clsTestAppointment.cs" />
     <Compile Include="clsTestType.cs" />
     <Compile Include="clsUserData.cs" />
-    <Compile Include="l.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="l.Designer.cs">
-      <DependentUpon>l.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
