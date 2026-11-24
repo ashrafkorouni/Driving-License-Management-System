@@ -154,6 +154,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tests\Controls\ctrlScheduledTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tests\Controls\ctrlScheduledTest.Designer.cs">
+      <DependentUpon>ctrlScheduledTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tests\Controls\ctrlScheduleTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -263,6 +269,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\Controls\ctrlScheduledTest.resx">
+      <DependentUpon>ctrlScheduledTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\Controls\ctrlScheduleTest.resx">
       <DependentUpon>ctrlScheduleTest.cs</DependentUpon>
