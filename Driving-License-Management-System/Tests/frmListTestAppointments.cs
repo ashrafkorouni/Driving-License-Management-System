@@ -139,5 +139,13 @@ namespace Driving_License_Management_System.Tests
 
 
         }
+
+        private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int TestAppointmentID = (int)dgvLicenseTestAppointments.CurrentRow.Cells[0].Value;
+            frmTakeTest frm = new frmTakeTest(TestAppointmentID, _TestTypeID);
+            frm.ShowDialog();
+            frmListTestAppointments_Load(null, null);
+        }
     }
 }

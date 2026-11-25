@@ -343,6 +343,7 @@
             // pbTestTypeImage
             // 
             this.pbTestTypeImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbTestTypeImage.Image = global::Driving_License_Management_System.Properties.Resources.Vision_512;
             this.pbTestTypeImage.InitialImage = null;
             this.pbTestTypeImage.Location = new System.Drawing.Point(178, 29);
             this.pbTestTypeImage.Margin = new System.Windows.Forms.Padding(9, 12, 9, 12);

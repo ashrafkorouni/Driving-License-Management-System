@@ -15,8 +15,8 @@ namespace Driving_License_Management_System.Tests.Controls
 {
     public partial class ctrlScheduledTest : UserControl
     {
-        private clsTestType.enTestType _TestTypeID;
-        private int _TestID;
+        private clsTestType.enTestType _TestTypeID = clsTestType.enTestType.VisionTest;
+        private int _TestID = -1;
         private int _LocalDrivingLicenseApplicationID = -1;
         private int _TestAppointmentID = -1;
 

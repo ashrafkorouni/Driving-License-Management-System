@@ -56,11 +56,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(921, 426);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ctrlDrivingLicenseApplicationInfo1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Name = "frmLocalDrivingLicenseApplicationInfo";
-            this.Text = "frmLocalDrivingLicenseApplicationInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Local Driving License Application Info";
             this.Load += new System.EventHandler(this.frmLocalDrivingLicenseApplicationInfo_Load);
             this.ResumeLayout(false);
 
