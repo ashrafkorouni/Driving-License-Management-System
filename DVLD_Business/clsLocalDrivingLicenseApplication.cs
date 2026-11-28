@@ -202,5 +202,57 @@ namespace DVLD_Business
             return clsTest.FindLastTestPerPersonAndLicenseClass(this.ApplicantPersonID, this.LicenseClassID, TestTypeID);
         }
 
+        public int IssueLicenseForTheFirstTime(string Notes, int CreatedByUserID)
+        {
+            int DriverID = -1;
+
+            clsDriver Driver = clsDriver.FindByPersonID(this.ApplicantPersonID);
+
+            if (Driver == null)
+            {
+                Driver = new clsDriver();
+
+                Driver.PersonID = this.ApplicantPersonID;
+                Driver.CreatedByUserID = CreatedByUserID;
+                
+                if (Driver.Save())
+                {
+                    DriverID = Driver.DriverID;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                DriverID = Driver.DriverID;
+            }
+
+            clsLicense NewLicense = new clsLicense();
+
+            NewLicense.ApplicationID = this.ApplicationID;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+            NewLicense.DriverID = DriverID;
+            NewLicense.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
+            NewLicense.IsActive = true;
+            NewLicense.IssueDate = DateTime.Now;
+            NewLicense.IssueReason = clsLicense.enIssueReason.FirstTime;
+            NewLicense.LicenseClass = this.LicenseClassID;
+            NewLicense.Notes = Notes;
+            NewLicense.PaidFees = this.LicenseClassInfo.ClassFees;
+
+            if (NewLicense.Save())
+            {
+                this.SetComplete();
+
+                return NewLicense.LicenseID;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
     }
 }

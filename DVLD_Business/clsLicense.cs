@@ -239,7 +239,6 @@ namespace DVLD_Business
             return NewLicense;
         }
 
-
         public clsLicense Replace(clsLicense.enIssueReason issueReason, int CreatedByUserID)
         {
             // First create new Application from type "Damage, Lost" License.
