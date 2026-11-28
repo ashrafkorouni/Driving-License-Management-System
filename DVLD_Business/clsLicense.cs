@@ -18,7 +18,7 @@ namespace DVLD_Business
         public int ApplicationID { set; get; }
         public int DriverID { set; get; }
         public int LicenseClass { set; get; }
-        public clsLicenseClass LicenseClassIfo;
+        public clsLicenseClass LicenseClassInfo;
         public DateTime IssueDate { set; get; }
         public DateTime ExpirationDate { set; get; }
         public string Notes { set; get; }
@@ -77,7 +77,7 @@ namespace DVLD_Business
             this.CreatedByUserID = CreatedByUserID;
 
             this.DriverInfo = clsDriver.FindByDriverID(this.DriverID);
-            this.LicenseClassIfo = clsLicenseClass.Find(this.LicenseClass);
+            this.LicenseClassInfo = clsLicenseClass.Find(this.LicenseClass);
             //this.DetainedInfo = clsDetainedLicense.FindByLicenseID(this.LicenseID);
 
             Mode = enMode.Update;
@@ -127,7 +127,7 @@ namespace DVLD_Business
             return clsLicenseData.GetAllLicenses();
 
         }
-        
+
         public bool Save()
         {
             switch (Mode)
@@ -152,7 +152,7 @@ namespace DVLD_Business
 
             return false;
         }
-       
+
         public static bool IsLicenseExistByPersonID(int PersonID, int LicenseClassID)
         {
             return (GetActiveLicenseIDByPersonID(PersonID, LicenseClassID) != -1);
@@ -186,6 +186,107 @@ namespace DVLD_Business
                 default:
                     return "First Time";
             }
+        }
+
+        public bool DeactivateCurrentLicense()
+        {
+            return clsLicenseData.DeactivateLicense(this.LicenseID);
+        }
+
+        public clsLicense RenewLicense(string Notes, int CreatedByUserID)
+        {
+            // First create new Application from type "Renew".
+            clsApplication Application = new clsApplication();
+
+            Application.ApplicantPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationDate = DateTime.Now;
+            Application.ApplicationTypeID = (int)clsApplication.enApplicationType.RenewDrivingLicense;
+            Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            Application.CreatedByUserID = CreatedByUserID;
+            Application.PaidFees = clsApplicationType.Find((int)clsApplication.enApplicationType.RenewDrivingLicense).Fees;
+            Application.LastStatusDate = DateTime.Now;
+
+            if (!Application.Save())
+            {
+                return null;
+            }
+
+            // Second create new License.
+
+            clsLicense NewLicense = new clsLicense();
+
+            int DefaultValidityLength = this.LicenseClassInfo.DefaultValidityLength;
+
+            NewLicense.ApplicationID = Application.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+            NewLicense.LicenseClass = this.LicenseClass;
+            NewLicense.IssueDate = DateTime.Now;
+            NewLicense.ExpirationDate = DateTime.Now.AddYears(DefaultValidityLength);
+            NewLicense.IsActive = true;
+            NewLicense.IssueReason = clsLicense.enIssueReason.Renew;
+            NewLicense.Notes = Notes;
+            NewLicense.PaidFees = this.LicenseClassInfo.ClassFees;
+
+            if (!NewLicense.Save())
+            {
+                return null;
+            }
+
+            // We need to Deactivate the old License.
+            DeactivateCurrentLicense();
+
+            return NewLicense;
+        }
+
+
+        public clsLicense Replace(clsLicense.enIssueReason issueReason, int CreatedByUserID)
+        {
+            // First create new Application from type "Damage, Lost" License.
+
+            clsApplication Application = new clsApplication();
+
+            Application.ApplicantPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationDate = DateTime.Now;
+           
+            Application.ApplicationTypeID = (issueReason == enIssueReason.DamagedReplacement) ?
+                (int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense :
+                (int)clsApplication.enApplicationType.ReplaceLostDrivingLicense;
+           
+            Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;            
+            Application.CreatedByUserID = CreatedByUserID;
+            Application.LastStatusDate = DateTime.Now;
+            Application.PaidFees = clsApplicationType.Find(Application.ApplicationTypeID).Fees;
+
+            if (!Application.Save())
+            {
+                return null;
+            }
+
+            // Second create new License.
+
+            clsLicense NewLicense = new clsLicense();
+
+            NewLicense.ApplicationID = Application.ApplicationID;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.ExpirationDate = this.ExpirationDate;
+            NewLicense.IsActive = true;
+            NewLicense.IssueDate = DateTime.Now;
+            NewLicense.IssueReason = issueReason;
+            NewLicense.Notes = this.Notes;
+            NewLicense.PaidFees = 0; // no fees for the license because it's a replacement.
+            NewLicense.LicenseClass = this.LicenseClass;
+
+            if (!NewLicense.Save())
+            {
+                return null;
+            }
+
+            //we need to deactivate the old License.
+            DeactivateCurrentLicense();
+
+            return NewLicense;
         }
     }
 
