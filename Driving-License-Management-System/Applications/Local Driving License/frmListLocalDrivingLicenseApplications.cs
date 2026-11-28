@@ -1,4 +1,5 @@
-﻿using Driving_License_Management_System.Tests;
+﻿using Driving_License_Management_System.Licenses.Local_Licenses;
+using Driving_License_Management_System.Tests;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -235,8 +236,15 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
             clsLocalDrivingLicenseApplication localDrivingLicenseApplication = 
                 clsLocalDrivingLicenseApplication.FindByLocalDrivingApplicenseID(LocalDrivingLicenseApplicationID);
 
+            int TotalPassedTests = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value;
 
-            editApplicationToolStripMenuItem.Enabled = localDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New;
+            bool LicenseExists = localDrivingLicenseApplication.IsLicenseIssued();
+
+            issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (TotalPassedTests == 3) && !LicenseExists;
+
+            showLicenseToolStripMenuItem.Enabled = LicenseExists;
+            editApplicationToolStripMenuItem.Enabled = !LicenseExists && localDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New;
+            ScheduleTestMenu.Enabled = !LicenseExists;
 
             //We only allow cancel incase the application status is new not complete or Cancelled.
             cancelApplicationToolStripMenuItem.Enabled =
@@ -266,6 +274,16 @@ namespace Driving_License_Management_System.Applications.Local_Driving_License
                 //To Allow Schdule steet test, Person must pass the vision * written tests, and must not passed Street test before.
                 scheduleStreetTestToolStripMenuItem.Enabled = PassedVisionTest && PassedWrittenTest && !PassedStreetTest; 
             }
+        }
+
+        private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmIssueDriverLicenseFirstTime frm = new frmIssueDriverLicenseFirstTime((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
+
+            frm.ShowDialog();
+
+            frmListLocalDrivingLicenseApplications_Load(null, null);
+
         }
     }
 }

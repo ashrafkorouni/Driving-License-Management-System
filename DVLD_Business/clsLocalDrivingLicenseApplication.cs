@@ -254,5 +254,15 @@ namespace DVLD_Business
             }
         }
 
+        public bool PassedAllTests()
+        {
+            return clsTest.PassedAllTests(this.LocalDrivingLicenseApplicationID);
+        }
+
+        public bool IsLicenseIssued()
+        {
+            return clsLicense.IsLicenseExistByPersonID(this.ApplicantPersonID, this.LicenseClassID);
+        }
+
     }
 }
